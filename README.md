@@ -8,5 +8,7 @@
 
 ### WordPress Plugins and Features Used:
 
--   WordPress REST API
--   Permalink Settings: Custom Structure like this: `http://myblog.com/%post_id%/`
+-   Features: WordPress REST API
+-   Settings: Permalink Settings: Custom Structure like this: `http://myblog.com/%post_id%/`
+-   Plugins: Buzzy Blog WP Customization( `/docs/wordpress/plugins`),
+    Force Login
