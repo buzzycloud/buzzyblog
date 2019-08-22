@@ -3,14 +3,26 @@ import logo from "@/assets/logo.png";
 
 export default function NavBar() {
     return (
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="/">
+        <nav className="navbar">
+            <div className="container">
+                <div className="navbar-brand">
+                    <div className="navbar-item">
                         <img src={logo} />
-                    </a>
+                    </div>
+                    <div className="navbar-item">CMS2</div>
                 </div>
-                <div class="navbar-menu"></div>
+                <div className="navbar-menu">
+                    <div className="navbar-end">
+                        <div className="navbar-item">
+                            <div className="buttons">
+                                <a className="button is-primary">
+                                    <strong>Sign up</strong>
+                                </a>
+                                <a className="button is-light">Log in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     );
