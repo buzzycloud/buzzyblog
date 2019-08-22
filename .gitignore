@@ -2,6 +2,9 @@ node_modules/
 .vscode/
 .idea/
 
+# build
+build/
+dist/
 
 # logs
 *.log

@@ -39,7 +39,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "CMS2",
+            title: "Yumin's Notes",
             template: "./public/index.html",
             favicon: "./public/favicon.png",
             hash: true,

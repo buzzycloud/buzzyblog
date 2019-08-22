@@ -1,5 +1,5 @@
 {
-    "name": "cms2",
+    "name": "blog",
     "version": "1.0.0",
     "description": "a CMS front end demo and an Admin Dashboard which can adopt various CMS platforms, such as wordpress, drupal, etc",
     "main": "index.js",

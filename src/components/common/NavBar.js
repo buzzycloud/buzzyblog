@@ -9,16 +9,15 @@ export default function NavBar() {
                     <div className="navbar-item">
                         <img src={logo} />
                     </div>
-                    <div className="navbar-item">CMS2</div>
+                    <div className="navbar-item">Yumin's Notes</div>
                 </div>
                 <div className="navbar-menu">
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
                                 <a className="button is-primary">
-                                    <strong>Sign up</strong>
+                                    <strong>Log in</strong>
                                 </a>
-                                <a className="button is-light">Log in</a>
                             </div>
                         </div>
                     </div>
