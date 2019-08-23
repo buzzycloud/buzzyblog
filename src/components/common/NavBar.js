@@ -1,10 +1,32 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import logo from "@/assets/logo.png";
 
 export default function NavBar() {
     const [active, setActive] = useState(false);
     const handleNavbarBurgerOnClick = () => {
         setActive((active) => !active);
+    };
+
+    const [keyword, setKeyword] = useState(null);
+
+    const handleInpuOnChange = (value) => {
+        setKeyword(value);
+    };
+    const handleEnterKeyUp = async (key) => {
+        if (key === "Enter") {
+            await search();
+        }
+    };
+    const handleSearchIconOnClick = async () => {
+        await search();
+    };
+
+    const search = async () => {
+        if (!!keyword) {
+        } else {
+        }
     };
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -29,6 +51,24 @@ export default function NavBar() {
                     </div>
 
                     <div className="navbar-end">
+                        <div className="navbar-item">
+                            <p className="control has-icons-right">
+                                <input
+                                    className="input is-rounded is-focused"
+                                    type="email"
+                                    placeholder="Search"
+                                    autoFocus
+                                    onChange={({ target: { value } }) => handleInpuOnChange(value)}
+                                    onKeyUp={({ key }) => handleEnterKeyUp(key)}
+                                />
+                                <span
+                                    className="icon is-right"
+                                    onClick={handleSearchIconOnClick}
+                                    style={{ pointerEvents: "auto", cursor: "pointer" }}>
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </span>
+                            </p>
+                        </div>
                         <div className="navbar-item">
                             <div className="buttons">
                                 <a className="button is-outlined">Sign up</a>
