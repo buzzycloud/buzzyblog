@@ -1,13 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useState } from "react";
 import logo from "@/assets/logo.png";
 
 export default function NavBar() {
-    const handleNavbarBurgerOnClick = useCallback(() => {
-        const els = document.getElementsByClassName("navbar-toggle-active");
-        els.forEach((el) => {
-            el.classList.toggle("is-active");
-        });
-    });
+    const [active, setActive] = useState(false);
+    const handleNavbarBurgerOnClick = () => {
+        setActive((active) => !active);
+    };
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="container">
@@ -17,18 +15,14 @@ export default function NavBar() {
                     </div>
                     <div className="navbar-item">Yumin's Notes</div>
                     <a
-                        role="button"
-                        className="navbar-burger navbar-toggle-active"
-                        aria-label="menu"
-                        aria-expanded="false"
-                        data-target="navbarMenuItems"
+                        className={active ? "navbar-burger is-active" : "navbar-burger"}
                         onClick={handleNavbarBurgerOnClick}>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                     </a>
                 </div>
-                <div className="navbar-menu navbar-toggle-active" id="navbarMenuItems">
+                <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
                         <a className="navbar-item">Home</a>
                         <a className="navbar-item">Resume</a>
