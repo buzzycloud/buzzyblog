@@ -16,7 +16,7 @@ const App = () => {
                         <PostContainer />
                     </div>
                 </div>
-                <div className="tile">
+                <div className="tile is-12">
                     <Footer />
                 </div>
             </div>

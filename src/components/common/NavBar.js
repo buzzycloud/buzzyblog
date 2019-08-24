@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import logo from "@/assets/logo.png";
 
 import { searchPosts } from "@/apis/posts";
@@ -76,7 +74,7 @@ export default function NavBar() {
                                     className="icon is-right"
                                     onClick={handleSearchIconOnClick}
                                     style={{ pointerEvents: "auto", cursor: "pointer" }}>
-                                    <FontAwesomeIcon icon={faSearch} />
+                                    <i className="fas fa-search"></i>
                                 </span>
                             </p>
                         </div>
