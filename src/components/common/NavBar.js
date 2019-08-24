@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import logo from "@/assets/logo.png";
 
-import { searchPosts, getAllPosts } from "@/apis/posts";
+import { searchPosts } from "@/apis/posts";
 
 export default function NavBar() {
     const [active, setActive] = useState(false);
@@ -37,19 +37,6 @@ export default function NavBar() {
             // console.log(posts);
         }
     };
-
-    const initPosts = async () => {
-        let resp = await getAllPosts();
-        if (resp.status == 200) {
-            setPosts(resp.data);
-        } else {
-            setPosts(null);
-        }
-    };
-
-    useEffect(() => {
-        initPosts();
-    }, []);
 
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
