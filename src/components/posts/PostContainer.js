@@ -4,7 +4,7 @@ import { PostContext } from "@/contexts/PostContext";
 
 const PostContainer = () => {
     const { posts } = useContext(PostContext);
-    console.log(posts);
+    // console.log(posts);
     return (
         <div className="tile is-parent">
             <div className="container">

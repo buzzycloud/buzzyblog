@@ -4,11 +4,20 @@ const postsUrl = `${BASE_URL}/wp-json/wp/v2/posts`;
 const mediaUrl = `${BASE_URL}/wp-json/wp/v2/media`;
 const commentsUrl = `${BASE_URL}/wp-json/wp/v2/comments`;
 
-async function getAllPosts() {
+/**
+ * @param {*} page
+ * To determine how many pages of data are available,
+ * the API returns two header fields with every paginated response:
+ *      X-WP-Total: the total number of records in the collection
+ *      X-WP-TotalPages: the total number of pages encompassing all available records
+ */
+async function getPosts(page) {
     try {
         let resp = await axios.request({
             url: postsUrl,
             method: "get",
+            page: page ? page : 1,
+            per_page: 10,
         });
         return resp;
     } catch (e) {
@@ -16,13 +25,16 @@ async function getAllPosts() {
     }
 }
 
-async function searchPosts(keyword) {
+async function searchPosts(keyword, page) {
+    const [k, p] = arguments;
     try {
         let resp = await axios.request({
             url: postsUrl,
             method: "get",
             params: {
-                search: keyword,
+                search: k,
+                page: p ? p : 1,
+                per_page: 10,
             },
         });
         return resp;
@@ -85,4 +97,4 @@ async function addOneCommentOfOnePost(payload) {
     }
 }
 
-export { getAllPosts, searchPosts, getMediaOfOnePost, getCommentsOfOnePost, addOneCommentOfOnePost };
+export { getPosts, searchPosts, getMediaOfOnePost, getCommentsOfOnePost, addOneCommentOfOnePost };

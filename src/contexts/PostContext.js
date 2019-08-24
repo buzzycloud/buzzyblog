@@ -1,12 +1,12 @@
 import React, { createContext, useState, useEffect } from "react";
-import { getAllPosts } from "@/apis/posts";
+import { getPosts } from "@/apis/posts";
 
 export const PostContext = createContext();
 
 const PostContextProvider = (props) => {
     const [posts, setPosts] = useState([]);
     const initPosts = async () => {
-        let resp = await getAllPosts();
+        let resp = await getPosts();
         if (resp.status == 200) {
             setPosts(resp.data);
         } else {
