@@ -13,13 +13,22 @@ const PostContainer = () => {
                         <div style={{ marginBottom: "0.5rem" }} className="title">
                             {post.title.rendered}
                         </div>
-                        <div className="tags is-marginless">
-                            <span className="tag is-rounded ">{post.date.replace("T", " ")}</span>
+                        <div className="tags has-addons is-marginless">
+                            <span className="tag">Published At: </span>
+                            <span className="tag is-primary">{post.date.replace("T", " ")}</span>
                         </div>
-                        <div>{parse(post.excerpt.rendered)}</div>
                         <div className="tags">
-                            {post.tags.length ? <span className="tag is-success">{post.tags}</span> : ""}
+                            {post.tags.length ? (
+                                post.tags.map((tag) => (
+                                    <span className="tag is-success" key={tag}>
+                                        {tag}
+                                    </span>
+                                ))
+                            ) : (
+                                <span className="tag">no tag assigned</span>
+                            )}
                         </div>
+                        <div className="content">{parse(post.excerpt.rendered)}</div>
                     </div>
                 );
             })}

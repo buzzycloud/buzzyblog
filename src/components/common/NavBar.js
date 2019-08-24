@@ -80,14 +80,14 @@ export default function NavBar() {
                                 </span>
                             </p>
                         </div>
-                        <div className="navbar-item">
+                        {/* <div className="navbar-item">
                             <div className="buttons">
                                 <a className="button is-outlined">Sign up</a>
                                 <a className="button is-primary">
                                     <strong>Log in</strong>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

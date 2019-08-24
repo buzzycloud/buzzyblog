@@ -2,7 +2,7 @@ import React from "react";
 
 const SideBar = () => {
     return (
-        <aside className="menu is-4 is-pulled-left" style={{ padding: "0.75rem 0" }}>
+        <aside className="menu is-4 is-pulled-left" style={{ padding: "0.75rem" }}>
             <p className="menu-label">General</p>
             <ul className="menu-list">
                 <li>
