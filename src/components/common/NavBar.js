@@ -40,7 +40,7 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
                     <div className="navbar-item">

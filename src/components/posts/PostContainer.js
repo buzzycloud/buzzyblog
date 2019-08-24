@@ -6,7 +6,7 @@ const PostContainer = () => {
     const { posts } = useContext(PostContext);
     // console.log(posts);
     return (
-        <div className="tile is-parent is-vertical is-8 is-pulled-right" style={{ padding: "0.75rem 0" }}>
+        <div className="tile is-parent is-vertical is-8 is-pulled-right">
             {posts.map((post) => {
                 return (
                     <div className="tile is-child " key={post.id}>
