@@ -12,6 +12,8 @@
  * License: GPLv2 or later
  */
 
+defined( 'ABSPATH' ) or die( 'ERROR!' );
+
  /**Allow Comments via REST API */
 add_filter( 'rest_allow_anonymous_comments', '__return_true' );
 /** allow access via rest api while maintaing force-login  */

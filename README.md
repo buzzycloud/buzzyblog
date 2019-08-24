@@ -16,4 +16,7 @@
 -   Settings:
     -   Permalink Settings: Custom Structure like this: `http://myblog.com/%post_id%/`
     -   Editor: Visual Editor (default)
--   Plugins: Buzzy Blog( `/docs/wordpress/plugins`), Force Login
+-   Plugins:
+    -   Buzzy Blog( `/docs/wordpress/plugins`)
+    -   Force Login
+    -   [WP Githuber MD](https://github.com/terrylinooo/githuber-md)

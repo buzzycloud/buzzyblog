@@ -26,6 +26,7 @@ export default function NavBar() {
         await search();
     };
 
+    /** for now, not able to search the title field */
     const search = async () => {
         if (!!keyword) {
             let resp = await searchPosts(keyword);
