@@ -2,8 +2,8 @@
 
 ### :heart: Introduction:
 
--   a new endeavor to provide better experiences for content creators
--   a beautiful front end built with react.js and bulma
+-   a new endeavor to provide better experiences for content creators, content managers, or digital marketers, etc
+-   a powerful and beautiful front end built with react.js and bulma
     -   the ultimate goal is to enable you to customize your website with the full power of modern JavaScript and CSS
     -   while you still can manage your contents with the Portal/Dashboard you are familiar with
     -   in the future, we will provide a super dashboard so that you can manage your contents like a breeze

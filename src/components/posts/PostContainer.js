@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import parse from "html-react-parser";
-import { PostContext } from "@/contexts/PostContext";
+import PostContext from "@/contexts/PostContext";
 
 const PostContainer = () => {
     const { posts } = useContext(PostContext);

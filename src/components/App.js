@@ -3,7 +3,7 @@ import NavBar from "@/components/common/NavBar";
 import SideBar from "@/components/common/SideBar";
 import Footer from "@/components/common/Footer";
 import PostContainer from "@/components/posts/PostContainer";
-import PostContextProvider from "@/contexts/PostContext";
+import { PostContextProvider } from "@/contexts/PostContext";
 
 const App = () => {
     return (

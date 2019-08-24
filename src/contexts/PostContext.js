@@ -1,9 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { getPosts } from "@/apis/posts";
 
-export const PostContext = createContext();
+const PostContext = createContext();
 
-const PostContextProvider = (props) => {
+export default PostContext;
+
+export const PostContextProvider = (props) => {
     const [posts, setPosts] = useState([]);
     const initPosts = async () => {
         let resp = await getPosts();
@@ -20,5 +22,3 @@ const PostContextProvider = (props) => {
 
     return <PostContext.Provider value={{ posts }}>{props.children}</PostContext.Provider>;
 };
-
-export default PostContextProvider;
