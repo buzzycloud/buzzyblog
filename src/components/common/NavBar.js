@@ -1,17 +1,38 @@
-import React, { useState, useContext } from "react";
-import PostContext from "@/contexts/PostContext";
+import React, { useState, useEffect, useContext } from "react";
 import logo from "@/assets/logo.png";
 
-import { searchPosts } from "@/apis/posts";
+import PostContext from "@/contexts/PostContext";
+import { getPosts, searchPosts } from "@/apis/posts";
 
 export default function NavBar() {
+    /** toggle mobile and desktop */
     const [active, setActive] = useState(false);
     const handleNavbarBurgerOnClick = () => {
         setActive((active) => !active);
     };
 
+    /** init posts when the navbar is rendered for the first time */
+    useEffect(() => {
+        const initPosts = async () => {
+            let resp = await getPosts();
+            if (resp.status == 200) {
+                dispatch({
+                    type: "INIT_POSTS",
+                    posts: resp.data,
+                });
+            } else {
+                dispatch({
+                    type: "INIT_POSTS",
+                    posts: [],
+                });
+            }
+        };
+        initPosts();
+    }, []);
+
+    /** search posts */
     const [keyword, setKeyword] = useState(null);
-    const { updatePosts } = useContext(PostContext);
+    const { dispatch } = useContext(PostContext);
 
     const handleInpuOnChange = (value) => {
         setKeyword(value);
@@ -30,9 +51,15 @@ export default function NavBar() {
         if (!!keyword) {
             let resp = await searchPosts(keyword);
             if (resp.status == 200) {
-                updatePosts(resp.data);
+                dispatch({
+                    type: "SEARCH_POSTS",
+                    posts: resp.data,
+                });
             } else {
-                updatePosts([]);
+                dispatch({
+                    type: "SEARCH_POSTS",
+                    posts: [],
+                });
             }
             // console.log(posts);
         }
