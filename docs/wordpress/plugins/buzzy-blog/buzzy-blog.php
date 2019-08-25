@@ -1,6 +1,6 @@
 <?php
 /**
- * @package BuzzyBlogPlugin
+ * @package BuzzyBlog
  */
 /**
  * Plugin Name: Buzzy Blog
@@ -11,11 +11,16 @@
  * Author URI: https://guiyumin.com
  * License: GPLv2 or later
  */
-
 defined( 'ABSPATH' ) or die( 'ERROR!' );
 
  /**Allow Comments via REST API */
 add_filter( 'rest_allow_anonymous_comments', '__return_true' );
-/** allow access via rest api while maintaing force-login  */
-add_filter( 'rest_authentication_errors', '__return_true' );
 
+/** allow access via rest api while maintaing force-login  */
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+// check for plugin using plugin name
+if ( is_plugin_active( 'wp-force-login/wp-force-login.php' ) ) {
+  //plugin is activated
+  add_filter( 'rest_authentication_errors', '__return_true' );
+} 
