@@ -1,4 +1,4 @@
-## Yumin's Notes
+## Buzzy Press
 
 ### :heart: Introduction:
 
@@ -9,9 +9,20 @@
     -   in the future, we will provide a super dashboard so that you can manage your contents like a breeze
 -   integrated with various CMS platforms, such as WordPress, Drupal, Joomla, etc
 
-## :bookmark_tabs: For Web Masters or Developers
+### Buzzy Press Family Projects
 
-### WordPress Plugins and Features Used:
+| What I Need     | Buzzy Project    | Description                                                                                  |
+| --------------- | ---------------- | -------------------------------------------------------------------------------------------- |
+| Personal blog   | Buzzy Blog       | - Simple layout <br /> - Set it up in 5 minutes <br> - React + Wordpress OR Drupal OR Joomla |
+| Company Website | Buzzy Enterprise | - Out of box usage and Integrated with all marketing tools                                   |
+
+---
+
+### Buzzy Blog
+
+### :bookmark_tabs: For Web Masters or Developers
+
+#### WordPress Plugins and Features Used:
 
 -   Features: WordPress REST API
 -   Settings:
