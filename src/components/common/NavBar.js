@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import PostContext from "@/contexts/PostContext";
 import logo from "@/assets/logo.png";
 
 import { searchPosts } from "@/apis/posts";
@@ -10,7 +11,7 @@ export default function NavBar() {
     };
 
     const [keyword, setKeyword] = useState(null);
-    const [posts, setPosts] = useState([]);
+    const { updatePosts } = useContext(PostContext);
 
     const handleInpuOnChange = (value) => {
         setKeyword(value);
@@ -29,9 +30,9 @@ export default function NavBar() {
         if (!!keyword) {
             let resp = await searchPosts(keyword);
             if (resp.status == 200) {
-                setPosts(resp.data);
+                updatePosts(resp.data);
             } else {
-                setPosts(null);
+                updatePosts([]);
             }
             // console.log(posts);
         }

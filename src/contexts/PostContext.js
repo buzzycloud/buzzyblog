@@ -20,5 +20,9 @@ export const PostContextProvider = (props) => {
         initPosts();
     }, []);
 
-    return <PostContext.Provider value={{ posts }}>{props.children}</PostContext.Provider>;
+    const updatePosts = (newPosts) => {
+        setPosts([...newPosts]);
+    };
+
+    return <PostContext.Provider value={{ posts, updatePosts }}>{props.children}</PostContext.Provider>;
 };
