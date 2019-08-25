@@ -5,6 +5,17 @@ import PostContext from "@/contexts/PostContext";
 const PostContainer = () => {
     const { posts } = useContext(PostContext);
     // console.log(posts);
+    if (posts.length === 0) {
+        return (
+            <div className="tile is-parent is-vertical is-8 is-pulled-right">
+                <div className="tile is-child">
+                    <div className="content">
+                        <p>Not Found Any Posts</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
     const stickyPosts = posts.filter((post) => post.sticky);
     const regularPosts = posts.filter((post) => !post.sticky);
     const sortedPosts = [...stickyPosts, ...regularPosts];
@@ -12,7 +23,7 @@ const PostContainer = () => {
         <div className="tile is-parent is-vertical is-8 is-pulled-right">
             {sortedPosts.map((post) => {
                 return (
-                    <div className="tile is-child " key={post.id}>
+                    <div className="tile is-child" key={post.id}>
                         <div style={{ marginBottom: "0.5rem" }} className="title">
                             {post.sticky ? (
                                 <span className="tag is-medium" style={{ backgroundColor: "#ffdd57" }}>

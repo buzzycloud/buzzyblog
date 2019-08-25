@@ -12,7 +12,7 @@ export const PostContextProvider = (props) => {
         if (resp.status == 200) {
             setPosts(resp.data);
         } else {
-            setPosts(null);
+            setPosts([]);
         }
     };
 
