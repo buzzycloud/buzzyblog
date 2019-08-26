@@ -12,12 +12,11 @@
  * License: GPLv2 or later
  */
 defined( 'ABSPATH' ) or die( 'ERROR!' );
+/** allow access via rest api while maintaing force-login  */
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
  /**Allow Comments via REST API */
 add_filter( 'rest_allow_anonymous_comments', '__return_true' );
-
-/** allow access via rest api while maintaing force-login  */
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 // check for plugin using plugin name
 if ( is_plugin_active( 'wp-force-login/wp-force-login.php' ) ) {
