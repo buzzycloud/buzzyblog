@@ -20,6 +20,12 @@
 
 ### Buzzy Blog
 
+### :triangular_flag_on_post: Buzzy Blog Features
+
+-   :round_pushpin: React + WordPress OR Drupal OR Joomla REST API
+-   :round_pushpin: Bulma CSS Framework
+-   :round_pushpin: Google Analytics
+
 ### :bookmark_tabs: For Web Masters or Developers
 
 #### WordPress Plugins and Features Used:
