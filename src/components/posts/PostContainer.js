@@ -16,9 +16,9 @@ const PostContainer = () => {
             </div>
         );
     }
-    const stickyPosts = posts.filter((post) => post.sticky);
+    const pinnedPosts = posts.filter((post) => post.sticky);
     const regularPosts = posts.filter((post) => !post.sticky);
-    const sortedPosts = [...stickyPosts, ...regularPosts];
+    const sortedPosts = [...pinnedPosts, ...regularPosts];
     return (
         <div className="tile is-parent is-vertical is-8 is-pulled-right">
             {sortedPosts.map((post) => {

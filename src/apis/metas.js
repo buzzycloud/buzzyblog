@@ -1,11 +1,9 @@
 import { axios, BASE_URL } from "./index";
 
-const tagsUrl = `${BASE_URL}/wp-json/wp/v2/tags`;
-
-async function getTags(page) {
+async function getMetas(meta_field, page) {
     try {
         let resp = await axios.request({
-            url: postsUrl,
+            url: `${BASE_URL}/wp-json/wp/v2/${meta_field}`,
             method: "get",
             hide_empty: true,
             page: page ? page : 1,
@@ -17,4 +15,4 @@ async function getTags(page) {
     }
 }
 
-export { getTags };
+export { getMetas };

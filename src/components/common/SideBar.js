@@ -1,57 +1,54 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import PostContext from "@/contexts/PostContext";
+import { getMetas } from "@/apis/metas";
 
 const SideBar = () => {
+    const { posts } = useContext(PostContext);
+    const pinnedPosts = posts.filter((post) => post.sticky);
+    // console.log(pinnedPosts);
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const initCategories = async () => {
+            let resp = await getMetas("categories");
+            if (resp.status === 200) {
+                setCategories(resp.data);
+            } else {
+                setCategories([]);
+            }
+        };
+        initCategories();
+    }, []);
+    // console.log(categories);
     return (
         <aside className="menu is-4 is-pulled-left" style={{ padding: "0.75rem" }}>
-            <p className="menu-label">General</p>
+            <p className="menu-label">Categories</p>
             <ul className="menu-list">
-                <li>
-                    <a>Dashboard</a>
-                </li>
-                <li>
-                    <a>Customers</a>
-                </li>
+                {/* at least 1 category, Uncategorized */}
+                {categories.map((c) => {
+                    return (
+                        <li key={c.id}>
+                            <a>{c.name}</a>
+                        </li>
+                    );
+                })}
             </ul>
-            <p className="menu-label">Administration</p>
+            <p className="menu-label">Pinned Posts</p>
             <ul className="menu-list">
-                <li>
-                    <a>Team Settings</a>
-                </li>
-                <li>
-                    <a className="is-active">Manage Your Team</a>
-                    <ul>
-                        <li>
-                            <a>Members</a>
-                        </li>
-                        <li>
-                            <a>Plugins</a>
-                        </li>
-                        <li>
-                            <a>Add a member</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a>Invitations</a>
-                </li>
-                <li>
-                    <a>Cloud Storage Environment Settings</a>
-                </li>
-                <li>
-                    <a>Authentication</a>
-                </li>
-            </ul>
-            <p className="menu-label">Transactions</p>
-            <ul className="menu-list">
-                <li>
-                    <a>Payments</a>
-                </li>
-                <li>
-                    <a>Transfers</a>
-                </li>
-                <li>
-                    <a>Balance</a>
-                </li>
+                {pinnedPosts.length ? (
+                    pinnedPosts.map((post) => {
+                        return (
+                            <li key={post.id}>
+                                <a>{post.title.rendered}</a>
+                            </li>
+                        );
+                    })
+                ) : (
+                    <li>
+                        <a>No Pinned Posts Yet</a>
+                    </li>
+                )}
             </ul>
         </aside>
     );
