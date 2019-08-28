@@ -22,7 +22,7 @@ const SideBar = () => {
     }, []);
     // console.log(categories);
     return (
-        <aside className="menu is-4 is-pulled-left" style={{ padding: "0.75rem" }}>
+        <aside className="menu is-3 is-pulled-left" style={{ padding: "0.75rem" }}>
             <p className="menu-label">Categories</p>
             <ul className="menu-list">
                 {/* at least 1 category, Uncategorized */}
@@ -34,8 +34,8 @@ const SideBar = () => {
                     );
                 })}
             </ul>
-            <p className="menu-label">Pinned Posts</p>
-            <ul className="menu-list">
+            <p className="menu-label is-hidden-mobile">Pinned Posts</p>
+            <ul className="menu-list is-hidden-mobile">
                 {pinnedPosts.length ? (
                     pinnedPosts.map((post) => {
                         return (
