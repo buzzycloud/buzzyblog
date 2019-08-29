@@ -19,7 +19,7 @@ const PostContainer = () => {
     const regularPosts = posts.all.filter((post) => !post.sticky);
     const sortedPosts = [...pinnedPosts, ...regularPosts];
     return (
-        <div className="tile is-parent is-vertical is-9">
+        <div className="tile is-parent is-vertical">
             {sortedPosts.map((post) => {
                 return (
                     <div className="tile is-child" key={post.id}>

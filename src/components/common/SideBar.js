@@ -21,7 +21,7 @@ const SideBar = () => {
     }, []);
     // console.log(categories);
     return (
-        <aside className="menu is-3" style={{ padding: "0.75rem" }}>
+        <aside className="menu" style={{ padding: "0.75rem" }}>
             <p className="menu-label">Categories</p>
             <ul className="menu-list">
                 {/* at least 1 category, Uncategorized */}

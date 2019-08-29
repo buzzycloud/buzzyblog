@@ -9,12 +9,14 @@ const App = () => {
     return (
         <PostContextProvider>
             <NavBar />
-            <div className="container is-flex-widescreen" style={{ minHeight: "calc(80vh - 70px)" }}>
-                <div className="container is-pulled-left">
-                    <SideBar />
-                </div>
-                <div className="container is-pulled-right">
-                    <PostContainer />
+            <div className="container" style={{ minHeight: "calc(80vh - 70px)" }}>
+                <div className="tile is-parent is-flex-widescreen">
+                    <div className="tile is-3 is-pulled-left">
+                        <SideBar />
+                    </div>
+                    <div className="tile is-9 is-pulled-right">
+                        <PostContainer />
+                    </div>
                 </div>
             </div>
             <div className="content is-marginless">
