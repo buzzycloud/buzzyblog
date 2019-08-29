@@ -25,6 +25,7 @@
 -   :round_pushpin: React + WordPress OR Drupal OR Joomla REST API
 -   :round_pushpin: Bulma CSS Framework
 -   :round_pushpin: Google Analytics
+-   :round_pushpin: Search Engine Optimization (`SEO`)
 
 ### :bookmark_tabs: For Web Masters or Developers
 

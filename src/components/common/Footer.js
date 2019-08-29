@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer className="footer tile is-12 is-flex-mobile">
+        <footer className="footer tile is-flex">
             <div className="container">
                 <div className="content has-text-centered">
                     <p>

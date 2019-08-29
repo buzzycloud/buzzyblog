@@ -9,16 +9,16 @@ const App = () => {
     return (
         <PostContextProvider>
             <NavBar />
-            <div className="tiles is-ancestor is-vertical">
-                <div className="tile is-12">
-                    <div className="container">
-                        <SideBar />
-                        <PostContainer />
-                    </div>
+            <div className="container is-flex-widescreen" style={{ minHeight: "calc(80vh - 70px)" }}>
+                <div className="container is-pulled-left">
+                    <SideBar />
                 </div>
-                <div className="tile is-12">
-                    <Footer />
+                <div className="container is-pulled-right">
+                    <PostContainer />
                 </div>
+            </div>
+            <div className="content is-marginless">
+                <Footer />
             </div>
         </PostContextProvider>
     );
