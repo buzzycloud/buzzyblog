@@ -18,12 +18,14 @@ export default function NavBar() {
             if (resp.status == 200) {
                 dispatch({
                     type: "INIT_POSTS",
-                    posts: resp.data,
+                    all: resp.data,
+                    pinned: resp.data.filter((post) => post.sticky),
                 });
             } else {
                 dispatch({
                     type: "INIT_POSTS",
-                    posts: [],
+                    all: [],
+                    pinned: [],
                 });
             }
         };
@@ -53,12 +55,12 @@ export default function NavBar() {
             if (resp.status == 200) {
                 dispatch({
                     type: "SEARCH_POSTS",
-                    posts: resp.data,
+                    all: resp.data,
                 });
             } else {
                 dispatch({
                     type: "SEARCH_POSTS",
-                    posts: [],
+                    all: [],
                 });
             }
             // console.log(posts);

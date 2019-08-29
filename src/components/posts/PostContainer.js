@@ -4,7 +4,6 @@ import PostContext from "@/contexts/PostContext";
 
 const PostContainer = () => {
     const { posts } = useContext(PostContext);
-    // console.log(posts);
     if (posts.length === 0) {
         return (
             <div className="tile is-parent is-vertical is-8 is-pulled-right">
@@ -16,8 +15,8 @@ const PostContainer = () => {
             </div>
         );
     }
-    const pinnedPosts = posts.filter((post) => post.sticky);
-    const regularPosts = posts.filter((post) => !post.sticky);
+    const pinnedPosts = posts.all.filter((post) => post.sticky);
+    const regularPosts = posts.all.filter((post) => !post.sticky);
     const sortedPosts = [...pinnedPosts, ...regularPosts];
     return (
         <div className="tile is-parent is-vertical is-9">

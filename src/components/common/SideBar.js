@@ -4,8 +4,7 @@ import { getMetas } from "@/apis/metas";
 
 const SideBar = () => {
     const { posts } = useContext(PostContext);
-    const pinnedPosts = posts.filter((post) => post.sticky);
-    // console.log(pinnedPosts);
+    // console.log(posts);
 
     const [categories, setCategories] = useState([]);
 
@@ -36,8 +35,8 @@ const SideBar = () => {
             </ul>
             <p className="menu-label is-hidden-mobile">Pinned Posts</p>
             <ul className="menu-list is-hidden-mobile">
-                {pinnedPosts.length ? (
-                    pinnedPosts.map((post) => {
+                {posts.pinned.length ? (
+                    posts.pinned.map((post) => {
                         return (
                             <li key={post.id}>
                                 <a>{post.title.rendered}</a>
