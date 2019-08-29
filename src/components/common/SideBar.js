@@ -20,6 +20,11 @@ const SideBar = () => {
         initCategories();
     }, []);
     // console.log(categories);
+
+    const handlePostOnclick = (post) => {
+        const { id, slug } = post;
+    };
+
     return (
         <aside className="menu" style={{ padding: "0.75rem" }}>
             <p className="menu-label">Categories</p>
@@ -38,7 +43,7 @@ const SideBar = () => {
                 {posts.pinned.length ? (
                     posts.pinned.map((post) => {
                         return (
-                            <li key={post.id}>
+                            <li key={post.id} onClick={() => handlePostOnclick(post)}>
                                 <a>{post.title.rendered}</a>
                             </li>
                         );

@@ -15,6 +15,11 @@ const PostContainer = () => {
             </div>
         );
     }
+
+    const handlePostOnClick = (post) => {
+        const { id, slug } = post;
+    };
+
     const pinnedPosts = posts.all.filter((post) => post.sticky);
     const regularPosts = posts.all.filter((post) => !post.sticky);
     const sortedPosts = [...pinnedPosts, ...regularPosts];
@@ -23,7 +28,10 @@ const PostContainer = () => {
             {sortedPosts.map((post) => {
                 return (
                     <div className="tile is-child" key={post.id}>
-                        <div style={{ marginBottom: "0.5rem" }} className="title">
+                        <div
+                            style={{ marginBottom: "0.5rem", cursor: "pointer" }}
+                            className="title"
+                            onClick={() => handlePostOnClick(post)}>
                             {post.sticky ? (
                                 <span className="tag is-medium" style={{ backgroundColor: "#ffdd57" }}>
                                     <i className="fas fa-thumbtack"></i>
@@ -48,7 +56,9 @@ const PostContainer = () => {
                                 <span className="tag">no tag assigned</span>
                             )}
                         </div>
-                        <div className="content">{parse(post.excerpt.rendered)}</div>
+                        <div className="content" onClick={() => handlePostOnClick(post)} style={{ cursor: "pointer" }}>
+                            {parse(post.excerpt.rendered)}
+                        </div>
                     </div>
                 );
             })}
