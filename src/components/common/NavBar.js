@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
+import { NavLink, withRouter } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 import PostContext from "@/contexts/PostContext";
 import { getPosts, searchPosts } from "@/apis/posts";
 
-export default function NavBar() {
+/** function hoist */
+export default withRouter(NavBar);
+
+function NavBar() {
     /** toggle mobile and desktop */
     const [active, setActive] = useState(false);
     const handleNavbarBurgerOnClick = () => {
@@ -85,8 +89,12 @@ export default function NavBar() {
                 </div>
                 <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
-                        <a className="navbar-item">Home</a>
-                        <a className="navbar-item">Resume</a>
+                        <NavLink className="navbar-item" to="/">
+                            Home
+                        </NavLink>
+                        <NavLink className="navbar-item" to="/resume">
+                            Resume
+                        </NavLink>
                     </div>
 
                     <div className="navbar-end">

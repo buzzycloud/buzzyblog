@@ -1,28 +1,27 @@
 import React from "react";
-import NavBar from "@/components/common/NavBar";
-import SideBar from "@/components/common/SideBar";
-import Footer from "@/components/common/Footer";
-import PostContainer from "@/components/posts/PostContainer";
 import { PostContextProvider } from "@/contexts/PostContext";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import NavBar from "@/components/common/NavBar";
+import { Homepage, Resume } from "@/components/routes";
+import Footer from "@/components/common/Footer";
 
 const App = () => {
     return (
-        <PostContextProvider>
-            <NavBar />
-            <div className="container" style={{ minHeight: "calc(80vh - 70px)" }}>
-                <div className="tile is-parent is-flex-widescreen">
-                    <div className="tile is-3 is-pulled-left">
-                        <SideBar />
-                    </div>
-                    <div className="tile is-9 is-pulled-right">
-                        <PostContainer />
-                    </div>
+        <BrowserRouter>
+            <PostContextProvider>
+                <NavBar />
+                <div className="container" style={{ minHeight: "calc(80vh - 70px)" }}>
+                    <Switch>
+                        <Route exact path="/" component={Homepage} />
+                        <Route path="/resume" component={Resume} />
+                    </Switch>
                 </div>
-            </div>
-            <div className="content is-marginless">
-                <Footer />
-            </div>
-        </PostContextProvider>
+                <div className="content is-marginless">
+                    <Footer />
+                </div>
+            </PostContextProvider>
+        </BrowserRouter>
     );
 };
 
