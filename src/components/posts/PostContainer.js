@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
+import { withRouter } from "react-router-dom";
 import parse from "html-react-parser";
 import PostContext from "@/contexts/PostContext";
 
-const PostContainer = () => {
-    const { posts } = useContext(PostContext);
+const PostContainer = (props) => {
+    const { posts, dispatch } = useContext(PostContext);
+    // console.log(posts);
     if (posts.length === 0) {
         return (
             <div className="tile is-parent is-vertical is-8 is-pulled-right">
@@ -18,11 +20,17 @@ const PostContainer = () => {
 
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
+        let url = `${id}-${slug.split(" ").join("_")}.html`;
+        props.history.push({
+            pathname: `/post/${url}`,
+            state: { post: post },
+        });
     };
 
     const pinnedPosts = posts.all.filter((post) => post.sticky);
     const regularPosts = posts.all.filter((post) => !post.sticky);
     const sortedPosts = [...pinnedPosts, ...regularPosts];
+
     return (
         <div className="tile is-parent is-vertical">
             {sortedPosts.map((post) => {
@@ -66,4 +74,4 @@ const PostContainer = () => {
     );
 };
 
-export default PostContainer;
+export default withRouter(PostContainer);

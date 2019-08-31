@@ -1,5 +1,5 @@
 const PostReducer = (state, action) => {
-    // console.log(state);
+    // console.log(state, action);
     switch (action.type) {
         case "INIT_POSTS":
             return {

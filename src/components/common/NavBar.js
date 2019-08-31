@@ -76,7 +76,9 @@ function NavBar() {
             <div className="container">
                 <div className="navbar-brand">
                     <div className="navbar-item">
-                        <img src={logo} />
+                        <NavLink to="/">
+                            <img src={logo} />
+                        </NavLink>
                     </div>
                     <div className="navbar-item">Yumin's Notes</div>
                     <a
