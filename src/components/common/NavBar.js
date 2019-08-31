@@ -80,7 +80,7 @@ function NavBar() {
                             <img src={logo} />
                         </NavLink>
                     </div>
-                    <div className="navbar-item">Yumin's Notes</div>
+                    <div className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</div>
                     <a
                         className={active ? "navbar-burger is-active" : "navbar-burger"}
                         onClick={handleNavbarBurgerOnClick}>
@@ -92,10 +92,16 @@ function NavBar() {
                 <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
                         <NavLink className="navbar-item" to="/">
-                            Home
+                            <span className="icon has-text-success">
+                                <i className="fas fa-home"></i>
+                            </span>
+                            <span>Home</span>
                         </NavLink>
                         <NavLink className="navbar-item" to="/resume">
-                            Resume
+                            <span className="icon has-text-warning">
+                                <i className="fas fa-star"></i>
+                            </span>
+                            <span>Resume</span>
                         </NavLink>
                     </div>
 

@@ -17,6 +17,8 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
  /**Allow Comments via REST API */
 add_filter( 'rest_allow_anonymous_comments', '__return_true' );
+/** disable xml-rpc */
+add_filter( 'xmlrpc_enabled', '__return_false' );
 
 // check for plugin using plugin name
 if ( is_plugin_active( 'wp-force-login/wp-force-login.php' ) ) {

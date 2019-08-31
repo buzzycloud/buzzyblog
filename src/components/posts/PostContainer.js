@@ -41,13 +41,13 @@ const PostContainer = (props) => {
                             className="title"
                             onClick={() => handlePostOnClick(post)}>
                             {post.sticky ? (
-                                <span className="tag is-medium" style={{ backgroundColor: "#ffdd57" }}>
+                                <span className="icon is-medium" style={{ backgroundColor: "#ffdd57" }}>
                                     <i className="fas fa-thumbtack"></i>
                                 </span>
                             ) : (
                                 ""
                             )}
-                            {post.title.rendered}
+                            <span>{post.title.rendered}</span>
                         </div>
                         <div className="tags has-addons is-marginless">
                             <span className="tag">Published At: </span>
