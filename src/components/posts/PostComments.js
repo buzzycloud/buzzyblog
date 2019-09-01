@@ -17,14 +17,28 @@ const PostComments = ({ post_id }) => {
         getComments(post_id);
     }, []);
 
+    const [newComment, SetNewComment] = useState({ post: post_id, content: "" });
+
+    const handleReplyOnClick = (comment_id) => {
+        SetNewComment({
+            ...newComment,
+            parent: comment_id,
+        });
+    };
+
     return (
         <React.Fragment>
             <div>
-                <div>
-                    Add a comment here:
-                    <span className="icon has-text-primary is-large">
-                        <i className="fas fa-hand-point-down"></i>
-                    </span>
+                <div className="is-flex is-marginless" style={{ justifyContent: "space-between" }}>
+                    <div>
+                        Add a comment here:
+                        <span className="icon has-text-primary is-large">
+                            <i className="fas fa-hand-point-down"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <a className="button is-primary">Submit</a>
+                    </div>
                 </div>
                 <div>
                     <textarea className="textarea" placeholder="e.g. Hello world"></textarea>
@@ -54,7 +68,11 @@ const PostComments = ({ post_id }) => {
                                                     <span>{comment.date.replace("T", " ")}</span>
                                                 </div>
                                                 <div>
-                                                    <a className="card-footer-item button">Reply</a>
+                                                    <a
+                                                        className="card-footer-item button"
+                                                        onClick={() => handleReplyOnClick(comment.id)}>
+                                                        Reply
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

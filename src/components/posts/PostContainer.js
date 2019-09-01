@@ -56,7 +56,7 @@ const PostContainer = (props) => {
                         <div className="tags">
                             {post.tags.length ? (
                                 post.tags.map((tag) => (
-                                    <span className="tag is-success" key={tag}>
+                                    <span className="tag is-info" key={tag}>
                                         {tag}
                                     </span>
                                 ))
