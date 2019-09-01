@@ -1,11 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import PostDetail from "@/components/posts/PostDetail";
+import PostFullText from "@/components/posts/PostFullText";
 
 const Post = (props) => {
     const { post } = props.location.state;
-    return <PostDetail post={post} />;
+    return <PostFullText post={post} />;
 };
 
 export default withRouter(Post);
