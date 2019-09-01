@@ -4,10 +4,10 @@ import PostContainer from "@/components/posts/PostContainer";
 const Homepage = () => {
     return (
         <div className="tile is-parent is-flex-widescreen">
-            <div className="tile is-3 is-pulled-left">
+            <div className="tile is-3">
                 <SideBar />
             </div>
-            <div className="tile is-9 is-pulled-right">
+            <div className="tile is-9">
                 <PostContainer />
             </div>
         </div>

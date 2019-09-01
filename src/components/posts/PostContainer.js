@@ -4,11 +4,11 @@ import parse from "html-react-parser";
 import PostContext from "@/contexts/PostContext";
 
 const PostContainer = (props) => {
-    const { posts, dispatch } = useContext(PostContext);
+    const { posts } = useContext(PostContext);
     // console.log(posts);
-    if (posts.length === 0) {
+    if (posts.all.length === 0) {
         return (
-            <div className="tile is-parent is-vertical is-8 is-pulled-right">
+            <div className="tile is-parent is-vertical">
                 <div className="tile is-child">
                     <div className="content">
                         <p>Not Found Any Posts</p>
