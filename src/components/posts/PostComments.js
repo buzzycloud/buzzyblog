@@ -18,11 +18,53 @@ const PostComments = ({ post_id }) => {
     }, []);
 
     return (
-        <div>
-            {comments.map((comm) => {
-                return <div key={comm.id}>{parse(comm.content.rendered)}</div>;
-            })}
-        </div>
+        <React.Fragment>
+            <div>
+                <div>
+                    Add a comment here:
+                    <span className="icon has-text-primary is-large">
+                        <i className="fas fa-hand-point-down"></i>
+                    </span>
+                </div>
+                <div>
+                    <textarea className="textarea" placeholder="e.g. Hello world"></textarea>
+                </div>
+                <br />
+            </div>
+            <div>
+                {comments.length == 0 ? (
+                    <div>No Comments Yet! Be the first to add a comment! </div>
+                ) : (
+                    <div className="card">
+                        <header className="card-header">
+                            <p className="card-header-title">Comments</p>
+                        </header>
+                        {comments.map((comment) => {
+                            return (
+                                <div key={comment.id} className="is-marginless">
+                                    <div className="card-content">
+                                        <div className="content">
+                                            {parse(comment.content.rendered)}
+                                            <div className="is-flex" style={{ justifyContent: "space-between" }}>
+                                                <div>
+                                                    <span>{comment.author_name}</span>
+                                                    <br />
+                                                    <span>{comment.date.replace("T", " ")}</span>
+                                                </div>
+                                                <div>
+                                                    <a className="card-footer-item button">Reply</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr className="hr is-marginless" />
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
+        </React.Fragment>
     );
 };
 
