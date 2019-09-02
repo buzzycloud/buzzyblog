@@ -37,7 +37,7 @@ const SideBar = (props) => {
         // console.log(resp);
         if (resp.status == 200) {
             props.history.push({
-                pathname: `/category/${slug}`,
+                pathname: `/category/${slug.split(" ").join("_")}`,
                 state: { posts: [...resp.data] },
             });
         } else {
@@ -52,7 +52,7 @@ const SideBar = (props) => {
         <aside className="menu" style={{ padding: "0.75rem" }}>
             <p className="menu-label">Categories</p>
             <ul className="menu-list">
-                <li onClick={() => handleCategoryOnClick({ id: 0 })}>
+                <li onClick={() => handleCategoryOnClick({ id: 0, slug: "all" })}>
                     <a>All Categories</a>
                 </li>
                 {categories.map((c) => {
