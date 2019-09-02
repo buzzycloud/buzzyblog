@@ -5,7 +5,7 @@ import { getMetas } from "@/apis/metas";
 import { searchPosts } from "@/apis/posts";
 
 const SideBar = (props) => {
-    const { posts, dispatch } = useContext(PostContext);
+    const { posts } = useContext(PostContext);
     // console.log(posts);
 
     const [categories, setCategories] = useState([]);
@@ -32,18 +32,18 @@ const SideBar = (props) => {
         });
     };
 
-    const handleCategoryOnClick = async ({ id }) => {
+    const handleCategoryOnClick = async ({ id, slug }) => {
         let resp = await searchPosts({ category_id: id });
         // console.log(resp);
         if (resp.status == 200) {
-            dispatch({
-                type: "GET_POSTS_BY",
-                all: resp.data,
+            props.history.push({
+                pathname: `/category/${slug}`,
+                state: { posts: [...resp.data] },
             });
         } else {
-            dispatch({
-                type: "GET_POSTS_BY",
-                all: [],
+            props.history.push({
+                pathname: `/category/${slug}`,
+                state: { posts: [] },
             });
         }
     };

@@ -1,7 +1,7 @@
 import Homepage from "./Homepage";
 import Resume from "@/components/myself/Resume";
 import Post from "./Post";
-import Categories from "./Categories";
+import Category from "./Category";
 import Search from "./Search";
 
-export { Homepage, Resume, Post, Categories, Search };
+export { Homepage, Resume, Post, Category, Search };

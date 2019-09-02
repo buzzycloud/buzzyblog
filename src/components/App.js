@@ -16,7 +16,7 @@ const App = () => {
                     <Switch>
                         <Route exact path="/" component={Routes.Homepage} />
                         <Route path="/search" component={Routes.Search} />
-                        <Route path="/categories/:slug" component={Routes.Categories} />
+                        <Route path="/category/:slug" component={Routes.Category} />
                         <Route path="/resume" component={Routes.Resume} />
                         <Route path="/post/:slug" component={Routes.Post} />
                     </Switch>

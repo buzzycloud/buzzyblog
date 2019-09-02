@@ -10,11 +10,6 @@ const PostReducer = (state, action) => {
                 ...state,
                 search: [...action.search],
             };
-        case "GET_POSTS_BY":
-            return {
-                all: [...action.all],
-                ...state,
-            };
         default:
             return state;
     }
