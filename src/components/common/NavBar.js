@@ -22,12 +22,14 @@ function NavBar(props) {
                 type: "INIT_POSTS",
                 all: resp.data,
                 pinned: resp.data.filter((post) => post.sticky),
+                search: [],
             });
         } else {
             dispatch({
                 type: "INIT_POSTS",
                 all: [],
                 pinned: [],
+                search: [],
             });
         }
     };
