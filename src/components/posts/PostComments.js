@@ -47,9 +47,9 @@ const PostComments = ({ post_id }) => {
             </div>
             <div>
                 {comments.length == 0 ? (
-                    <article className="message">
+                    <div className="message">
                         <div className="message-body">No Comments Yet! Be the first to add a comment!</div>
-                    </article>
+                    </div>
                 ) : (
                     <div className="card">
                         <header className="card-header">

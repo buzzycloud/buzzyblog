@@ -3,14 +3,14 @@ import PostContext from "@/contexts/PostContext";
 import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
 
-const PostContainer = () => {
+const SearchContainer = (props) => {
     const { posts } = useContext(PostContext);
     // console.log(posts);
-    if (posts.all.length === 0) {
-        return <NoPostMessage msg="The author hasn't published any posts!" />;
+    if (posts.search.length === 0) {
+        return <NoPostMessage msg="Posts Not Found" />;
     }
 
-    return <BaseContainer posts={posts.all} />;
+    return <BaseContainer posts={posts.search} />;
 };
 
-export default PostContainer;
+export default SearchContainer;

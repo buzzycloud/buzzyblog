@@ -60,30 +60,20 @@ function NavBar(props) {
             if (resp.status == 200) {
                 dispatch({
                     type: "SEARCH_POSTS",
-                    all: resp.data,
+                    search: resp.data,
                 });
             } else {
                 dispatch({
                     type: "SEARCH_POSTS",
-                    all: [],
+                    search: [],
                 });
             }
             // console.log(posts);
-            if (props.location.pathname !== "/") {
+            if (props.location.pathname !== "/search") {
                 props.history.push({
-                    pathname: `/`,
+                    pathname: "/search",
                 });
             }
-        }
-    };
-
-    // click logo or Home
-    const handleGoHome = async () => {
-        await initPosts();
-        if (props.location.pathname !== "/") {
-            props.history.push({
-                pathname: `/`,
-            });
         }
     };
 
@@ -92,9 +82,9 @@ function NavBar(props) {
             <div className="container">
                 <div className="navbar-brand">
                     <div className="navbar-item">
-                        <a onClick={handleGoHome}>
+                        <NavLink to="/">
                             <img src={logo} />
-                        </a>
+                        </NavLink>
                     </div>
                     <div className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</div>
                     <a
@@ -107,12 +97,12 @@ function NavBar(props) {
                 </div>
                 <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
-                        <a className="navbar-item" onClick={handleGoHome}>
+                        <NavLink className="navbar-item" to="/">
                             <span className="icon has-text-success">
                                 <i className="fas fa-home"></i>
                             </span>
                             <span>Home</span>
-                        </a>
+                        </NavLink>
                         <NavLink className="navbar-item" to="/resume">
                             <span className="icon has-text-warning">
                                 <i className="fas fa-star"></i>

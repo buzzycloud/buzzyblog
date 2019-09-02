@@ -15,6 +15,7 @@ const App = () => {
                 <div className="container" style={{ minHeight: "calc(80vh - 70px)" }}>
                     <Switch>
                         <Route exact path="/" component={Routes.Homepage} />
+                        <Route path="/search" component={Routes.Search} />
                         <Route path="/categories/:slug" component={Routes.Categories} />
                         <Route path="/resume" component={Routes.Resume} />
                         <Route path="/post/:slug" component={Routes.Post} />
