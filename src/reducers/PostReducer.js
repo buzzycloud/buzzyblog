@@ -11,6 +11,11 @@ const PostReducer = (state, action) => {
                 all: [...action.all],
                 pinned: [...state.pinned],
             };
+        case "GET_POSTS_BY":
+            return {
+                all: [...action.all],
+                pinned: [...state.pinned],
+            };
         default:
             return state;
     }

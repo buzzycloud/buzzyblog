@@ -11,7 +11,7 @@ const PostContainer = (props) => {
             <div className="tile is-parent is-vertical">
                 <div className="tile is-child">
                     <div className="content">
-                        <p>Not Found Any Posts</p>
+                        <p className="has-text-danger">Posts Not Found</p>
                     </div>
                 </div>
             </div>

@@ -15,24 +15,25 @@ function NavBar(props) {
         setActive((active) => !active);
     };
 
+    const initPosts = async () => {
+        let resp = await getPosts();
+        if (resp.status == 200) {
+            dispatch({
+                type: "INIT_POSTS",
+                all: resp.data,
+                pinned: resp.data.filter((post) => post.sticky),
+            });
+        } else {
+            dispatch({
+                type: "INIT_POSTS",
+                all: [],
+                pinned: [],
+            });
+        }
+    };
+
     /** init posts when the navbar is rendered for the first time */
     useEffect(() => {
-        const initPosts = async () => {
-            let resp = await getPosts();
-            if (resp.status == 200) {
-                dispatch({
-                    type: "INIT_POSTS",
-                    all: resp.data,
-                    pinned: resp.data.filter((post) => post.sticky),
-                });
-            } else {
-                dispatch({
-                    type: "INIT_POSTS",
-                    all: [],
-                    pinned: [],
-                });
-            }
-        };
         initPosts();
     }, []);
 
@@ -55,7 +56,7 @@ function NavBar(props) {
     /** for now, not able to search the title field */
     const search = async () => {
         if (!!keyword) {
-            let resp = await searchPosts(keyword);
+            let resp = await searchPosts({ keyword: keyword });
             if (resp.status == 200) {
                 dispatch({
                     type: "SEARCH_POSTS",
@@ -76,14 +77,24 @@ function NavBar(props) {
         }
     };
 
+    // click logo or Home
+    const handleGoHome = async () => {
+        await initPosts();
+        if (props.location.pathname !== "/") {
+            props.history.push({
+                pathname: `/`,
+            });
+        }
+    };
+
     return (
         <nav className="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
                     <div className="navbar-item">
-                        <NavLink to="/">
+                        <a onClick={handleGoHome}>
                             <img src={logo} />
-                        </NavLink>
+                        </a>
                     </div>
                     <div className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</div>
                     <a
@@ -96,12 +107,12 @@ function NavBar(props) {
                 </div>
                 <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
-                        <NavLink className="navbar-item" to="/">
+                        <a className="navbar-item" onClick={handleGoHome}>
                             <span className="icon has-text-success">
                                 <i className="fas fa-home"></i>
                             </span>
                             <span>Home</span>
-                        </NavLink>
+                        </a>
                         <NavLink className="navbar-item" to="/resume">
                             <span className="icon has-text-warning">
                                 <i className="fas fa-star"></i>

@@ -1,8 +1,6 @@
 import { axios, BASE_URL } from "./index";
 
 const postsUrl = `${BASE_URL}/wp-json/wp/v2/posts`;
-const mediaUrl = `${BASE_URL}/wp-json/wp/v2/media`;
-const commentsUrl = `${BASE_URL}/wp-json/wp/v2/comments`;
 
 /**
  * @param {*} page
@@ -16,24 +14,8 @@ async function getPosts(page) {
         let resp = await axios.request({
             url: postsUrl,
             method: "get",
-            page: page ? page : 1,
-            per_page: 10,
-        });
-        return resp;
-    } catch (e) {
-        return e.response;
-    }
-}
-
-async function searchPosts(keyword, page) {
-    const [k, p] = arguments;
-    try {
-        let resp = await axios.request({
-            url: postsUrl,
-            method: "get",
             params: {
-                search: k,
-                page: p ? p : 1,
+                page: page ? page : 1,
                 per_page: 10,
             },
         });
@@ -43,28 +25,18 @@ async function searchPosts(keyword, page) {
     }
 }
 
-async function getMediaOfOnePost(post_id) {
-    try {
-        let resp = await axios.request({
-            url: mediaUrl,
-            method: "get",
-            params: {
-                parent: post_id,
-            },
-        });
-        return resp;
-    } catch (e) {
-        return e.response;
-    }
-}
+async function searchPosts(params = {}) {
+    const { keyword, page, category_id } = params;
 
-async function getCommentsOfOnePost(post_id) {
     try {
         let resp = await axios.request({
-            url: commentsUrl,
+            url: postsUrl,
             method: "get",
             params: {
-                post: post_id,
+                search: keyword ? keyword : "",
+                page: page ? page : 1,
+                per_page: 10,
+                categories: category_id ? category_id : "",
             },
         });
         return resp;
@@ -84,7 +56,8 @@ async function getCommentsOfOnePost(post_id) {
  * }
  *
  */
-async function addOneCommentOfOnePost(payload) {
+const commentsUrl = `${BASE_URL}/wp-json/wp/v2/comments`;
+async function addOneComment(payload) {
     try {
         let resp = await axios.request({
             url: commentsUrl,
@@ -97,4 +70,4 @@ async function addOneCommentOfOnePost(payload) {
     }
 }
 
-export { getPosts, searchPosts, getMediaOfOnePost, getCommentsOfOnePost, addOneCommentOfOnePost };
+export { getPosts, searchPosts, addOneComment };
