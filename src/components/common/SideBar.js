@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import PostContext from "@/contexts/PostContext";
 import { getMetas } from "@/apis/metas";
 
-const SideBar = () => {
+const SideBar = (props) => {
     const { posts } = useContext(PostContext);
     // console.log(posts);
 
@@ -21,8 +22,13 @@ const SideBar = () => {
     }, []);
     // console.log(categories);
 
-    const handlePostOnclick = (post) => {
+    const handlePostOnClick = (post) => {
         const { id, slug } = post;
+        let url = `${id}-${slug.split(" ").join("_")}.html`;
+        props.history.push({
+            pathname: `/post/${url}`,
+            state: { post: post },
+        });
     };
 
     return (
@@ -43,7 +49,7 @@ const SideBar = () => {
                 {posts.pinned.length ? (
                     posts.pinned.map((post) => {
                         return (
-                            <li key={post.id} onClick={() => handlePostOnclick(post)}>
+                            <li key={post.id} onClick={() => handlePostOnClick(post)}>
                                 <a>{post.title.rendered}</a>
                             </li>
                         );
@@ -58,4 +64,4 @@ const SideBar = () => {
     );
 };
 
-export default SideBar;
+export default withRouter(SideBar);

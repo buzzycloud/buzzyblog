@@ -8,7 +8,7 @@ import { getPosts, searchPosts } from "@/apis/posts";
 /** function hoist */
 export default withRouter(NavBar);
 
-function NavBar() {
+function NavBar(props) {
     /** toggle mobile and desktop */
     const [active, setActive] = useState(false);
     const handleNavbarBurgerOnClick = () => {
@@ -68,6 +68,11 @@ function NavBar() {
                 });
             }
             // console.log(posts);
+            if (props.location.pathname !== "/") {
+                props.history.push({
+                    pathname: `/`,
+                });
+            }
         }
     };
 
