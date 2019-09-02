@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import parse from "html-react-parser";
 
-const InitialContainer = (props) => {
+const BaseContainer = (props) => {
     const { history, posts } = props;
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
@@ -60,4 +60,4 @@ const InitialContainer = (props) => {
     );
 };
 
-export default withRouter(InitialContainer);
+export default withRouter(BaseContainer);
