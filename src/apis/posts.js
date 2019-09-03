@@ -1,4 +1,4 @@
-import { axios, BASE_URL } from "./index";
+import { axios, BASE_URL } from "./base";
 
 const postsUrl = `${BASE_URL}/wp-json/wp/v2/posts`;
 

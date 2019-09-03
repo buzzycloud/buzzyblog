@@ -1,4 +1,4 @@
-import { axios, BASE_URL } from "./index";
+import { axios, BASE_URL } from "./base";
 
 /** meta info means categories, tags, comments
  * and any other information

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getMetas } from "@/apis/metas";
 import parse from "html-react-parser";
+import AddNewComment from "./AddNewCommnet";
 
 /** Comments of one single post */
 const PostComments = ({ post_id }) => {
@@ -28,23 +29,7 @@ const PostComments = ({ post_id }) => {
 
     return (
         <React.Fragment>
-            <div>
-                <div className="is-flex is-marginless" style={{ justifyContent: "space-between" }}>
-                    <div>
-                        Add a comment here:
-                        <span className="icon has-text-primary is-large">
-                            <i className="fas fa-hand-point-down"></i>
-                        </span>
-                    </div>
-                    <div>
-                        <a className="button is-primary">Submit</a>
-                    </div>
-                </div>
-                <div>
-                    <textarea className="textarea" placeholder="e.g. Hello world"></textarea>
-                </div>
-                <br />
-            </div>
+            <AddNewComment post_id={post_id} />
             <div>
                 {comments.length == 0 ? (
                     <div className="message">
@@ -70,7 +55,8 @@ const PostComments = ({ post_id }) => {
                                                 <div>
                                                     <a
                                                         className="card-footer-item button"
-                                                        onClick={() => handleReplyOnClick(comment.id)}>
+                                                        onClick={() => handleReplyOnClick(comment.id)}
+                                                    >
                                                         Reply
                                                     </a>
                                                 </div>
