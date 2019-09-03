@@ -17,21 +17,22 @@ function NavBar(props) {
 
     const initPosts = async () => {
         let resp = await getPosts();
-        if (resp.status == 200) {
-            dispatch({
-                type: "INIT_POSTS",
-                all: resp.data,
-                pinned: resp.data.filter((post) => post.sticky),
-                search: [],
-            });
-        } else {
-            dispatch({
-                type: "INIT_POSTS",
-                all: [],
-                pinned: [],
-                search: [],
-            });
-        }
+        let posts =
+            resp.status == 200
+                ? {
+                      all: [...resp.data],
+                      pinned: resp.data.filter((post) => post.sticky),
+                  }
+                : {
+                      all: [],
+                      pinned: [],
+                  };
+
+        dispatch({
+            type: "INIT_POSTS",
+            ...posts,
+            search: [],
+        });
     };
 
     /** init posts when the navbar is rendered for the first time */
@@ -58,19 +59,13 @@ function NavBar(props) {
     /** for now, not able to search the title field */
     const search = async () => {
         if (!!keyword) {
-            let resp = await searchPosts({ keyword: keyword });
-            if (resp.status == 200) {
-                dispatch({
-                    type: "SEARCH_POSTS",
-                    search: resp.data,
-                });
-            } else {
-                dispatch({
-                    type: "SEARCH_POSTS",
-                    search: [],
-                });
-            }
-            // console.log(posts);
+            let resp = await searchPosts({ keyword });
+            let search = resp.status == 200 ? [...resp.data] : [];
+            dispatch({
+                type: "SEARCH_POSTS",
+                search: search,
+            });
+
             if (props.location.pathname !== "/search") {
                 props.history.push({
                     pathname: "/search",

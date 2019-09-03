@@ -35,17 +35,11 @@ const SideBar = (props) => {
     const handleCategoryOnClick = async ({ id, slug }) => {
         let resp = await searchPosts({ category_id: id });
         // console.log(resp);
-        if (resp.status == 200) {
-            props.history.push({
-                pathname: `/category/${slug.split(" ").join("_")}`,
-                state: { posts: [...resp.data] },
-            });
-        } else {
-            props.history.push({
-                pathname: `/category/${slug}`,
-                state: { posts: [] },
-            });
-        }
+        let posts = resp.status == 200 ? [...resp.data] : [];
+        props.history.push({
+            pathname: `/category/${slug.split(" ").join("_")}`,
+            state: { posts: posts },
+        });
     };
 
     return (

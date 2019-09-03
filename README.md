@@ -11,10 +11,9 @@
 
 ### Buzzy Press Family Projects
 
-| What I Need     | Buzzy Project    | Description                                                                                  |
-| --------------- | ---------------- | -------------------------------------------------------------------------------------------- |
-| Personal blog   | Buzzy Blog       | - Simple layout <br /> - Set it up in 5 minutes <br> - React + Wordpress OR Drupal OR Joomla |
-| Company Website | Buzzy Enterprise | - Out of box usage and Integrated with all marketing tools                                   |
+| What I Need   | Buzzy Project | Description                                                                                  |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------- |
+| Personal blog | Buzzy Blog    | - Simple layout <br /> - Set it up in 5 minutes <br> - React + Wordpress OR Drupal OR Joomla |
 
 ---
 
