@@ -1,35 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { getMetas } from "@/apis/metas";
 import parse from "html-react-parser";
 import AddNewComment from "./AddNewCommnet";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 /** Comments of one single post */
 const PostComments = ({ post_id }) => {
-    const [comments, SetComments] = useState([]);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         const getComments = async (id) => {
             let resp = await getMetas("comments", { post_id: id });
             if (resp.status === 200) {
-                SetComments(resp.data);
+                setComments(resp.data);
             }
         };
 
         getComments(post_id);
     }, []);
 
-    const [newComment, SetNewComment] = useState({ post: post_id, content: "" });
+    const [parentId, setParentId] = useState(0);
 
-    const handleReplyOnClick = (comment_id) => {
-        SetNewComment({
-            ...newComment,
-            parent: comment_id,
-        });
+    const handleReplyOnClick = (parent_id) => {
+        setParentId(parent_id);
+        executeScroll();
     };
+
+    const newCommentRef = useRef(null);
+    const executeScroll = () => scrollToRef(newCommentRef);
 
     return (
         <React.Fragment>
-            <AddNewComment post_id={post_id} />
+            <div ref={newCommentRef}>
+                <AddNewComment post_id={post_id} parent_id={parentId} />
+            </div>
             <div>
                 {comments.length == 0 ? (
                     <div className="message">

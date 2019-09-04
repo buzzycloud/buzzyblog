@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { addOneComment } from "@/apis/posts";
 
 const AddNewComment = (props) => {
-    const { post_id, parent } = props;
+    const { post_id, parent_id } = props;
     const [comment, setComment] = useState({});
     const [key, setKey] = useState("some-random-string");
 
@@ -37,7 +37,7 @@ const AddNewComment = (props) => {
             return;
         }
 
-        let payload = { ...comment, post: post_id, parent: !!parent ? parent : 0 };
+        let payload = { ...comment, post: post_id, parent: parent_id };
         let resp = await addOneComment(payload);
         if (resp.status === 201) {
             await Swal.fire({
