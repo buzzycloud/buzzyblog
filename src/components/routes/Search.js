@@ -1,7 +1,8 @@
 import React from "react";
 import SideBar from "@/components/common/SideBar";
 import SearchContainer from "@/components/posts/SearchContainer";
-const Homepage = () => {
+
+const Search = () => {
     return (
         <div className="tile is-parent is-flex-widescreen">
             <div className="tile is-3">
@@ -14,4 +15,4 @@ const Homepage = () => {
     );
 };
 
-export default Homepage;
+export default Search;

@@ -1,6 +1,7 @@
 import React from "react";
 import SideBar from "@/components/common/SideBar";
 import PostContainer from "@/components/posts/PostContainer";
+
 const Homepage = () => {
     return (
         <div className="tile is-parent is-flex-widescreen">
