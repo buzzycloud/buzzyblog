@@ -43,7 +43,7 @@ const SideBar = (props) => {
     };
 
     return (
-        <aside className="menu" style={{ padding: "0.75rem" }}>
+        <aside className="menu">
             <p className="menu-label">Categories</p>
             <ul className="menu-list">
                 <li onClick={() => handleCategoryOnClick({ id: 0, slug: "all" })}>
