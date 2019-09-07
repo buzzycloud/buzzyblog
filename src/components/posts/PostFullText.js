@@ -6,7 +6,7 @@ const PostFullText = ({ post }) => {
     const title = parse(post.title.rendered);
     const body = parse(post.content.rendered);
     return (
-        <div className="container">
+        <article className="container">
             <header className="tile is-parent is-vertical">
                 <div className="tile is-child">
                     <h1 className="title has-text-centered">{title}</h1>
@@ -38,7 +38,7 @@ const PostFullText = ({ post }) => {
                     <PostComments post_id={post.id} />
                 </div>
             </div>
-        </div>
+        </article>
     );
 };
 

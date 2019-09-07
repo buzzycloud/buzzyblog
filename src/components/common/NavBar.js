@@ -83,10 +83,11 @@ function NavBar(props) {
                             <img src={logo} />
                         </NavLink>
                     </div>
-                    <div className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</div>
+                    <h1 className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</h1>
                     <a
                         className={active ? "navbar-burger is-active" : "navbar-burger"}
-                        onClick={handleNavbarBurgerOnClick}>
+                        onClick={handleNavbarBurgerOnClick}
+                    >
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -122,7 +123,8 @@ function NavBar(props) {
                                 <span
                                     className="icon is-right"
                                     onClick={handleSearchIconOnClick}
-                                    style={{ pointerEvents: "auto", cursor: "pointer" }}>
+                                    style={{ pointerEvents: "auto", cursor: "pointer" }}
+                                >
                                     <i className="fas fa-search"></i>
                                 </span>
                             </p>
