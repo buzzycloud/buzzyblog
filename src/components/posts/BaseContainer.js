@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import parse from "html-react-parser";
-
+import PropTypes from "prop-types";
 const BaseContainer = (props) => {
     const { history, posts } = props;
     const handlePostOnClick = (post) => {
@@ -25,7 +25,8 @@ const BaseContainer = (props) => {
                         <div
                             style={{ marginBottom: "0.5rem", cursor: "pointer" }}
                             className="title"
-                            onClick={() => handlePostOnClick(post)}>
+                            onClick={() => handlePostOnClick(post)}
+                        >
                             {post.sticky ? (
                                 <span className="icon is-medium" style={{ backgroundColor: "#ffdd57" }}>
                                     <i className="fas fa-thumbtack"></i>
@@ -58,6 +59,10 @@ const BaseContainer = (props) => {
             })}
         </div>
     );
+};
+
+BaseContainer.propTypes = {
+    posts: PropTypes.array.isRequired,
 };
 
 export default withRouter(BaseContainer);

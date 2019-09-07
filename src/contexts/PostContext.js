@@ -5,7 +5,9 @@ const PostContext = createContext();
 
 export default PostContext;
 
+const initialState = { all: [], pinned: [], search: [] };
+
 export const PostContextProvider = (props) => {
-    const [posts, dispatch] = useReducer(PostReducer, { all: [], pinned: [], search: [] });
-    return <PostContext.Provider value={{ posts, dispatch }}> {props.children}</PostContext.Provider>;
+    const [posts, dispatch] = useReducer(PostReducer, initialState);
+    return <PostContext.Provider value={{ posts, dispatch }}>{props.children}</PostContext.Provider>;
 };

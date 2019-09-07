@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { addOneComment } from "@/apis/posts";
-
+import PropTypes from "prop-types";
 const AddNewComment = (props) => {
     const { post_id, parent_id } = props;
     const [comment, setComment] = useState({});
@@ -120,6 +120,11 @@ const AddNewComment = (props) => {
             <br />
         </div>
     );
+};
+
+AddNewComment.propTypes = {
+    post_id: PropTypes.number.isRequired,
+    parent_id: PropTypes.number.isRequired,
 };
 
 export default AddNewComment;

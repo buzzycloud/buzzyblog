@@ -1,7 +1,7 @@
 import React from "react";
 import parse from "html-react-parser";
 import PostComments from "./PostComments";
-
+import PropTypes from "prop-types";
 const PostFullText = ({ post }) => {
     const title = parse(post.title.rendered);
     const body = parse(post.content.rendered);
@@ -40,6 +40,10 @@ const PostFullText = ({ post }) => {
             </div>
         </div>
     );
+};
+
+PostFullText.propTypes = {
+    post: PropTypes.object.isRequired,
 };
 
 export default PostFullText;

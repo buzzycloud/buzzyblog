@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { getMetas } from "@/apis/metas";
 import parse from "html-react-parser";
 import AddNewComment from "./AddNewCommnet";
+import PropTypes from "prop-types";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -77,6 +78,10 @@ const PostComments = ({ post_id }) => {
             </div>
         </React.Fragment>
     );
+};
+
+PostComments.propTypes = {
+    post_id: PropTypes.number.isRequired,
 };
 
 export default PostComments;

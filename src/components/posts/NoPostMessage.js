@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 const NoPostMessage = ({ msg }) => {
     return (
         <div className="tile is-parent is-vertical">
@@ -12,6 +12,10 @@ const NoPostMessage = ({ msg }) => {
             </div>
         </div>
     );
+};
+
+NoPostMessage.propTypes = {
+    msg: PropTypes.string.isRequired,
 };
 
 export default NoPostMessage;
