@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import PostContext from "@/contexts/PostContext";
 import { getMetas } from "@/apis/metas";
-import { searchPosts } from "@/apis/posts";
+import { getPosts } from "@/apis/posts";
 
 const SideBar = (props) => {
     const { posts } = useContext(PostContext);
@@ -33,7 +33,7 @@ const SideBar = (props) => {
     };
 
     const handleCategoryOnClick = async ({ id, slug }) => {
-        let resp = await searchPosts({ category_id: id });
+        let resp = await getPosts({ category_id: id });
         // console.log(resp);
         let posts = resp.status == 200 ? [...resp.data] : [];
         props.history.push({

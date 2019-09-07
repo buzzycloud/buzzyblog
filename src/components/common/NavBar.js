@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 import PostContext from "@/contexts/PostContext";
-import { getPosts, searchPosts } from "@/apis/posts";
+import { getPosts } from "@/apis/posts";
 
 /** function hoist */
 export default withRouter(NavBar);
@@ -59,7 +59,7 @@ function NavBar(props) {
     /** for now, not able to search the title field */
     const search = async () => {
         if (!!keyword) {
-            let resp = await searchPosts({ keyword });
+            let resp = await getPosts({ keyword });
             let search = resp.status == 200 ? [...resp.data] : [];
             dispatch({
                 type: "SEARCH_POSTS",
