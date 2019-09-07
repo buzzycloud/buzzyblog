@@ -9,7 +9,7 @@ const PostFullText = ({ post }) => {
         <article className="container">
             <header className="tile is-parent is-vertical">
                 <div className="tile is-child">
-                    <h1 className="title has-text-centered">{title}</h1>
+                    <h3 className="title is-3 has-text-centered">{title}</h3>
                 </div>
                 <div className="tile is-child">
                     <div className="column is-offset-2 is-paddingless">
