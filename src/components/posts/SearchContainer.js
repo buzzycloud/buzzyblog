@@ -4,13 +4,13 @@ import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
 
 const SearchContainer = () => {
-    const { posts } = useContext(PostContext);
+    const { postContext } = useContext(PostContext);
     // console.log(posts);
-    if (posts.search.length === 0) {
+    if (postContext.search.length === 0) {
         return <NoPostMessage msg="Posts Not Found" />;
     }
 
-    return <BaseContainer posts={posts.search} />;
+    return <BaseContainer posts={postContext.search} />;
 };
 
 export default SearchContainer;

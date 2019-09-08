@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import PostContext from "@/contexts/PostContext";
 import parse from "html-react-parser";
 import PostComments from "./PostComments";
 import PropTypes from "prop-types";
+
 const PostFullText = ({ post }) => {
+    const { postContext } = useContext(PostContext);
     const title = parse(post.title.rendered);
     const body = parse(post.content.rendered);
     return (
@@ -21,7 +24,7 @@ const PostFullText = ({ post }) => {
                             {post.tags.length ? (
                                 post.tags.map((tag) => (
                                     <span className="tag is-info" key={tag}>
-                                        {tag}
+                                        {postContext.tags[tag]}
                                     </span>
                                 ))
                             ) : (

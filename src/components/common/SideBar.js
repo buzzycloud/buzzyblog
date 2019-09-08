@@ -5,20 +5,16 @@ import { getMetas } from "@/apis/metas";
 import { getPosts } from "@/apis/posts";
 
 const SideBar = (props) => {
-    const { posts } = useContext(PostContext);
-    // console.log(posts);
+    const { postContext } = useContext(PostContext);
 
     const [categories, setCategories] = useState([]);
+    const initCategories = async () => {
+        let resp = await getMetas("categories");
+        let categories = resp.status === 200 ? resp.data : [];
+        setCategories(categories);
+    };
 
     useEffect(() => {
-        const initCategories = async () => {
-            let resp = await getMetas("categories");
-            if (resp.status === 200) {
-                setCategories(resp.data);
-            } else {
-                setCategories([]);
-            }
-        };
         initCategories();
     }, []);
     // console.log(categories);
@@ -59,8 +55,8 @@ const SideBar = (props) => {
             </ul>
             <p className="menu-label is-hidden-mobile">Pinned Posts</p>
             <ul className="menu-list is-hidden-mobile">
-                {posts.pinned.length ? (
-                    posts.pinned.map((post) => {
+                {postContext.pinned.length ? (
+                    postContext.pinned.map((post) => {
                         return (
                             <li key={post.id} onClick={() => handlePostOnClick(post)}>
                                 <a>{post.title.rendered}</a>

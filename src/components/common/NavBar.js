@@ -4,6 +4,7 @@ import logo from "@/assets/logo.png";
 
 import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
+import { getMetas } from "@/apis/metas";
 
 /** function hoist */
 export default withRouter(NavBar);
@@ -16,22 +17,30 @@ function NavBar(props) {
     };
 
     const initPosts = async () => {
-        let resp = await getPosts();
+        let [respPosts, respTags]= await Promise.all([getPosts(),getMetas("tags")]);
         let posts =
-            resp.status == 200
+            respPosts.status == 200
                 ? {
-                      all: [...resp.data],
-                      pinned: resp.data.filter((post) => post.sticky),
+                      all: [...respPosts.data],
+                      pinned: respPosts.data.filter((post) => post.sticky),
                   }
                 : {
                       all: [],
                       pinned: [],
                   };
 
+        let tags = {};
+        if (respTags.status == 200) {
+            for (let tag of respTags.data) {
+                tags[tag.id] = tag.slug;
+            }
+        }
+
         dispatch({
             type: "INIT_POSTS",
             ...posts,
             search: [],
+            tags: tags,
         });
     };
 

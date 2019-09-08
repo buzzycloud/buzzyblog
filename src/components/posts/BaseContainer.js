@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import PostContext from "@/contexts/PostContext";
 import { withRouter } from "react-router-dom";
 import parse from "html-react-parser";
 import PropTypes from "prop-types";
+
 const BaseContainer = (props) => {
+    const { postContext } = useContext(PostContext);
     const { history, posts } = props;
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
@@ -44,7 +47,7 @@ const BaseContainer = (props) => {
                             {post.tags.length ? (
                                 post.tags.map((tag) => (
                                     <span className="tag is-info" key={tag}>
-                                        {tag}
+                                        {postContext.tags[tag]}
                                     </span>
                                 ))
                             ) : (
