@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
             chunks: "all",
         },
     },
+    devtool: "source-map",
     module: {
         rules: [
             {
@@ -52,6 +54,7 @@ module.exports = {
             favicon: "./public/favicon.png",
             hash: true,
         }),
+        new webpack.BannerPlugin("Copyright Yumin Gui <guiyumin@gmail.com> © 2019-" + new Date().getFullYear()),
     ],
     devServer: {
         open: true,
