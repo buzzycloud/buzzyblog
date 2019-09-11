@@ -1,3 +1,9 @@
+:point_right: [中文文档](README.CN.md)
+
+:point_down: English Documetation
+
+---
+
 ## Buzzy CMS
 
 ### :heart: Introduction:
