@@ -59,7 +59,7 @@ const BaseContainer = (props) => {
                             onClick={() => handlePostOnClick(post)}
                             style={{ cursor: "pointer" }}
                         >
-                            {parse(post.excerpt.rendered)}
+                            {parse(post.excerpt.rendered.replace("&hellip;", "<a>click me to read fulltext</a>"))}
                         </summary>
                     </div>
                 );
