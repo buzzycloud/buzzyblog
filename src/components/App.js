@@ -19,6 +19,7 @@ const App = () => {
                         <Route path="/category/:slug" component={Routes.Category} />
                         <Route path="/resume" component={Routes.Resume} />
                         <Route path="/post/:slug" component={Routes.Post} />
+                        <Route component={Routes.NotFound} />
                     </Switch>
                 </div>
                 <div className="content is-marginless">
