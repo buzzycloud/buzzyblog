@@ -30,6 +30,19 @@ async function getPosts(params = {}) {
     }
 }
 
+async function getOnePostById(post_id) {
+    let url = `${postsUrl}/${post_id}`;
+    try {
+        let resp = await axios.request({
+            url: url,
+            method: "get",
+        });
+        return resp;
+    } catch (e) {
+        return e.response;
+    }
+}
+
 /**
  * @param {*} payload
  * {
@@ -55,4 +68,4 @@ async function addOneComment(payload) {
     }
 }
 
-export { getPosts, addOneComment };
+export { getPosts, getOnePostById, addOneComment };
