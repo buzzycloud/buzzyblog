@@ -19,6 +19,7 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
 const enhance = compose(withCSS);
 
 module.exports = enhance({
+    // cssModules: true,
     target: "server",
     distDir: "dist",
     webpack(config, options) {
