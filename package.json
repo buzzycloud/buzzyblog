@@ -4,9 +4,10 @@
     "description": "a CMS front end demo and an Admin Dashboard which can adopt various CMS platforms, such as wordpress, drupal, etc",
     "main": "index.js",
     "scripts": {
-        "start": "next start -p 8081",
-        "build": "next build",
-        "dev": "next dev"
+        "next:start": "next start -p 8081",
+        "next:build": "next build",
+        "next:dev": "next dev",
+        "dev": "nodemon server.js"
     },
     "author": "medmin <erichui329@gmail.com>",
     "license": "Apache-2.0",
