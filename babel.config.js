@@ -1,4 +1,15 @@
+const path = require("path");
 module.exports = {
     presets: ["next/babel"],
-    plugins: [],
+    plugins: [
+        [
+            "module-resolver",
+            {
+                root: [path.resolve("./")],
+                alias: {
+                    src: path.resolve(__dirname, "src/"),
+                },
+            },
+        ],
+    ],
 };
