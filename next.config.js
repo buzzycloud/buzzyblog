@@ -25,6 +25,14 @@ module.exports = enhance({
     target: "server",
     distDir: "dist",
     webpack(config, options) {
+        config.module.rules.push({
+            test: /\.(jpg|png|gif|svg|ico|ttf|eot|woff|woff2|otf)$/,
+            use: [
+                {
+                    loader: "url-loader",
+                },
+            ],
+        });
         HACK_removeMinimizeOptionFromCssLoaders(config); //http://bit.ly/nextjs-css-loader-bug
         return config;
     },

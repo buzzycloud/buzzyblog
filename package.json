@@ -7,7 +7,7 @@
         "next:start": "next start -p 8081",
         "next:build": "next build",
         "next:dev": "next dev",
-        "dev": "nodemon server.js"
+        "dev": "nodemon server.js --ignore dist/"
     },
     "author": "medmin <erichui329@gmail.com>",
     "license": "Apache-2.0",
