@@ -20,19 +20,21 @@ const enhance = compose(
     withSass
 );
 
+const fileLoaderRule = {
+    test: /\.(jpe?g|png|gif|svg|ico|ttf|eot|woff|woff2|otf|webp)$/,
+    use: [
+        {
+            loader: "url-loader",
+        },
+    ],
+};
+
 module.exports = enhance({
     // cssModules: true,
     target: "server",
     distDir: "dist",
     webpack(config, options) {
-        config.module.rules.push({
-            test: /\.(jpg|png|gif|svg|ico|ttf|eot|woff|woff2|otf)$/,
-            use: [
-                {
-                    loader: "url-loader",
-                },
-            ],
-        });
+        config.module.rules.push(fileLoaderRule);
         HACK_removeMinimizeOptionFromCssLoaders(config); //http://bit.ly/nextjs-css-loader-bug
         return config;
     },
