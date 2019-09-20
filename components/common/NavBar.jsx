@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
+import Link from "next/link";
 
 export default function NavBar() {
     /** toggle mobile and desktop */
@@ -28,18 +29,22 @@ export default function NavBar() {
                 </div>
                 <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
-                        <a className="navbar-item" href="/">
-                            <span className="icon has-text-success">
-                                <i className="fas fa-home"></i>
-                            </span>
-                            <span>Home</span>
-                        </a>
-                        <a className="navbar-item" href="/resume">
-                            <span className="icon has-text-warning">
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>Resume</span>
-                        </a>
+                        <Link href="/">
+                            <a className="navbar-item">
+                                <span className="icon has-text-success">
+                                    <i className="fas fa-home"></i>
+                                </span>
+                                <span>Home</span>
+                            </a>
+                        </Link>
+                        <Link href="/resume">
+                            <a className="navbar-item">
+                                <span className="icon has-text-warning">
+                                    <i className="fas fa-star"></i>
+                                </span>
+                                <span>Resume</span>
+                            </a>
+                        </Link>
                     </div>
 
                     <div className="navbar-end">

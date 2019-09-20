@@ -4,12 +4,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
-export default function Layout({ children }) {
+export default function Layout(props) {
     return (
         <React.Fragment>
             <NavBar />
             <div className="container" style={{ minHeight: "calc(80vh - 70px)" }}>
-                {children}
+                {props.children}
             </div>
             <Footer />
         </React.Fragment>
