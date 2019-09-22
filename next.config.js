@@ -32,10 +32,12 @@ const fileLoaderRule = {
 module.exports = enhance({
     // cssModules: true,
     target: "server",
+    compress: true,
     distDir: "dist",
     env: {
         HTML_TITLE: "Yumin's Notes",
     },
+    poweredByHeader: false,
     webpack(config, options) {
         config.module.rules.push(fileLoaderRule);
         HACK_removeMinimizeOptionFromCssLoaders(config); //http://bit.ly/nextjs-css-loader-bug
