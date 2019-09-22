@@ -33,6 +33,9 @@ module.exports = enhance({
     // cssModules: true,
     target: "server",
     distDir: "dist",
+    env: {
+        HTML_TITLE: "Yumin's Notes",
+    },
     webpack(config, options) {
         config.module.rules.push(fileLoaderRule);
         HACK_removeMinimizeOptionFromCssLoaders(config); //http://bit.ly/nextjs-css-loader-bug
