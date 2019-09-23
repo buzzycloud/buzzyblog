@@ -5,11 +5,7 @@ const handle = next.getRequestHandler();
 
 next.prepare().then(() => {
     const server = express();
-    server.use(require("helmet")());
-    server.use((req, res, next) => {
-        res.setHeader("X-Powered-By", "Buzzy-Blog");
-        next();
-    });
+    server.use(require("helmet")({ hidePoweredBy: { setTo: "Buzzy-Blog" } }));
     server.get("*", (req, res) => {
         return handle(req, res);
     });
