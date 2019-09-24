@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
-
+import { useRouter } from "next/router";
 import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 
-const Search = (props) => {
+const Search = () => {
+    const router = useRouter();
+
     /** search posts */
     const [keyword, setKeyword] = useState(null);
     const { dispatch } = useContext(PostContext);
@@ -30,8 +32,8 @@ const Search = (props) => {
                 search: search,
             });
 
-            if (props.location.pathname !== "/search") {
-                props.history.push({
+            if (router.pathname !== "/search") {
+                router.push({
                     pathname: "/search",
                 });
             }
