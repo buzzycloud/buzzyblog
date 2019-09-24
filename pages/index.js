@@ -1,6 +1,6 @@
 import React from "react";
-import Resume from "../src_old/components/myself/Resume";
-import Layout from "src/components/common/Layout";
+import Resume from "@/components/myself/Resume";
+import Layout from "@/components/common/Layout";
 
 const Index = () => {
     return (

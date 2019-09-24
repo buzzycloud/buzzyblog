@@ -1,13 +1,55 @@
-import React from "react";
-import logo from "src/assets/logo.png";
+import React, { useEffect, useContext } from "react";
+import logo from "@/assets/logo.png";
 import Link from "next/link";
 
-export default function NavBar() {
+import PostContext from "@/contexts/PostContext";
+import { getPosts } from "@/apis/posts";
+import { getMetas } from "@/apis/metas";
+import Search from "./Search";
+
+export default function NavBar(props) {
     /** toggle mobile and desktop */
     const [active, setActive] = React.useState(false);
     const handleNavbarBurgerOnClick = () => {
         setActive((active) => !active);
     };
+
+    /** init context */
+    const { dispatch } = useContext(PostContext);
+
+    const initPosts = async () => {
+        let [respPosts, respTags] = await Promise.all([getPosts(), getMetas("tags")]);
+        let posts =
+            respPosts.status == 200
+                ? {
+                      all: [...respPosts.data],
+                      pinned: respPosts.data.filter((post) => post.sticky),
+                  }
+                : {
+                      all: [],
+                      pinned: [],
+                  };
+
+        let tags = {};
+        if (respTags.status == 200) {
+            for (let tag of respTags.data) {
+                tags[tag.id] = tag.slug;
+            }
+        }
+
+        dispatch({
+            type: "INIT_POSTS",
+            ...posts,
+            search: [],
+            tags: tags,
+        });
+    };
+
+    /** init posts when the navbar is rendered for the first time */
+    useEffect(() => {
+        initPosts();
+    }, []);
+
     return (
         <nav className="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
             <div className="container">
@@ -49,17 +91,7 @@ export default function NavBar() {
 
                     <div className="navbar-end">
                         <div className="navbar-item">
-                            <p className="control has-icons-right">
-                                <input
-                                    className="input is-rounded is-focused"
-                                    type="email"
-                                    placeholder="Search"
-                                    autoFocus
-                                />
-                                <span className="icon is-right" style={{ pointerEvents: "auto", cursor: "pointer" }}>
-                                    <i className="fas fa-search"></i>
-                                </span>
-                            </p>
+                            <Search />
                         </div>
                         {/* <div className="navbar-item">
                             <div className="buttons">
