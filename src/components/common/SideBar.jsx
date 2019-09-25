@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
 import PostContext from "@/contexts/PostContext";
 import { getMetas } from "@/apis/metas";
 import { getPosts } from "@/apis/posts";
@@ -73,4 +72,4 @@ const SideBar = (props) => {
     );
 };
 
-export default withRouter(SideBar);
+export default SideBar;
