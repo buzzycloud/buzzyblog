@@ -5,7 +5,7 @@ import NoPostMessage from "./NoPostMessage";
 
 const SearchContainer = () => {
     const { postContext } = useContext(PostContext);
-    // console.log(posts);
+    // console.log(postContext);
     if (postContext.search.length === 0) {
         return <NoPostMessage msg="Posts Not Found" />;
     }

@@ -26,10 +26,10 @@ const Search = () => {
     const search = async () => {
         if (!!keyword) {
             let resp = await getPosts({ keyword });
-            let search = resp.status == 200 ? [...resp.data] : [];
+
             dispatch({
                 type: "SEARCH_POSTS",
-                search: search,
+                search: resp.status == 200 ? [...resp.data] : [],
             });
 
             if (router.pathname !== "/search") {
