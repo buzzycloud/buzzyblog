@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import styles from "@/assets/styles/global.scss";
 
 import { PostContextProvider } from "@/contexts/PostContext";
 
@@ -16,6 +17,9 @@ class MyApp extends App {
                 <Head>
                     <title>{process.env.HTML_TITLE}</title>
                 </Head>
+                <style jsx global>
+                    {styles}
+                </style>
                 <Component {...pageProps} />
             </PostContextProvider>
         );
