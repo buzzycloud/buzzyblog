@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 
-const Search = () => {
+const SearchBar = () => {
     const router = useRouter();
 
     /** search posts */
@@ -61,4 +61,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export default SearchBar;

@@ -2,7 +2,7 @@ import React from "react";
 import SideBar from "@/components/common/SideBar";
 import SearchContainer from "@/components/posts/SearchContainer";
 
-const Search = () => {
+const SearchResultPage = () => {
     return (
         <div className="tile is-parent is-flex-widescreen">
             <div className="tile is-3">
@@ -15,4 +15,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export default SearchResultPage;

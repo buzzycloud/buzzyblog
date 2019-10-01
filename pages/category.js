@@ -3,7 +3,7 @@ import BaseContainer from "@/components/posts/BaseContainer";
 import SideBar from "@/components/common/SideBar";
 
 /** hide_empty == true, so, a category mush have at least one post */
-const Category = (props) => {
+const CategoryPage = (props) => {
     const { posts } = props.location.state;
 
     return (
@@ -18,4 +18,4 @@ const Category = (props) => {
     );
 };
 
-export default Category;
+export default CategoryPage;

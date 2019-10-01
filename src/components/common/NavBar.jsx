@@ -5,7 +5,7 @@ import Link from "next/link";
 import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 import { getMetas } from "@/apis/metas";
-import Search from "./Search";
+import SearchBar from "./SearchBar";
 
 export default function NavBar(props) {
     /** toggle mobile and desktop */
@@ -91,7 +91,7 @@ export default function NavBar(props) {
 
                     <div className="navbar-end">
                         <div className="navbar-item">
-                            <Search />
+                            <SearchBar />
                         </div>
                         {/* <div className="navbar-item">
                             <div className="buttons">
