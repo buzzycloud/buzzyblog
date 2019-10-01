@@ -3,6 +3,8 @@ import App from "next/app";
 import Head from "next/head";
 import styles from "@/assets/styles/global.scss";
 
+import Layout from "@/components/common/Layout";
+
 import { PostContextProvider } from "@/contexts/PostContext";
 
 /**
@@ -20,7 +22,9 @@ class MyApp extends App {
                 <style jsx global>
                     {styles}
                 </style>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </PostContextProvider>
         );
     }
