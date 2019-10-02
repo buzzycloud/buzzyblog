@@ -1,15 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import PostContext from "@/contexts/PostContext";
+import withPostContext from "@/components/common/withPostContext";
 import { getPosts } from "@/apis/posts";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const router = useRouter();
+    const { dispatch } = props;
 
     /** search posts */
     const [keyword, setKeyword] = useState(null);
-    const { dispatch } = useContext(PostContext);
-
     const handleInpuOnChange = (value) => {
         setKeyword(value);
     };
@@ -24,6 +23,7 @@ const SearchBar = () => {
 
     /** for now, not able to search the title field */
     const search = async () => {
+        console.log("sss");
         if (!!keyword) {
             let resp = await getPosts({ keyword });
 
@@ -61,4 +61,4 @@ const SearchBar = () => {
     );
 };
 
-export default SearchBar;
+export default withPostContext(SearchBar);

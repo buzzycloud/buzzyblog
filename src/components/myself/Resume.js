@@ -1,6 +1,6 @@
 import React from "react";
 
-const Resume = () => {
+const Resume = (props) => {
     return <div>Resume</div>;
 };
 

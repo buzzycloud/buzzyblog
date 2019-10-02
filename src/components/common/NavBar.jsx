@@ -1,4 +1,5 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
+import withPostContext from "@/components/common/withPostContext";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 
@@ -7,15 +8,17 @@ import { getPosts } from "@/apis/posts";
 import { getMetas } from "@/apis/metas";
 import SearchBar from "./SearchBar";
 
-export default function NavBar(props) {
-    /** toggle mobile and desktop */
-    const [active, setActive] = React.useState(false);
+export default withPostContext(NavBar);
+
+function NavBar(props) {
+    /** toggle navbav expand status when mobile */
+    const [isExpanded, setIsExpanded] = React.useState(false);
     const handleNavbarBurgerOnClick = () => {
-        setActive((active) => !active);
+        setIsExpanded((isExpanded) => !isExpanded);
     };
 
-    /** init context */
-    const { dispatch } = useContext(PostContext);
+    /** context */
+    const { dispatch } = props;
 
     const initPosts = async () => {
         let [respPosts, respTags] = await Promise.all([getPosts(), getMetas("tags")]);
@@ -61,7 +64,7 @@ export default function NavBar(props) {
                     </div>
                     <h1 className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</h1>
                     <a
-                        className={active ? "navbar-burger is-active" : "navbar-burger"}
+                        className={isExpanded ? "navbar-burger is-active" : "navbar-burger"}
                         onClick={handleNavbarBurgerOnClick}
                     >
                         <span aria-hidden="true"></span>
@@ -69,7 +72,7 @@ export default function NavBar(props) {
                         <span aria-hidden="true"></span>
                     </a>
                 </div>
-                <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
+                <div className={isExpanded ? "navbar-menu is-active" : "navbar-menu"}>
                     <div className="navbar-start">
                         <Link href="/">
                             <a className="navbar-item">

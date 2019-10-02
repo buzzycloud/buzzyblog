@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import PostContext from "@/contexts/PostContext";
+import React, { useEffect, useState } from "react";
+import withPostContext from "@/components/common/withPostContext";
 import { getMetas } from "@/apis/metas";
 import { getPosts } from "@/apis/posts";
+import { useRouter } from "next/router";
 
 const SideBar = (props) => {
-    const { postContext } = useContext(PostContext);
+    const router = useRouter();
+    const { postState } = props;
 
     const [categories, setCategories] = useState([]);
     const initCategories = async () => {
@@ -21,7 +23,7 @@ const SideBar = (props) => {
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
         let url = `${id}-${slug.split(" ").join("_")}.html`;
-        props.history.push({
+        router.push({
             pathname: `/post/${url}`,
             state: { post: post },
         });
@@ -31,7 +33,7 @@ const SideBar = (props) => {
         let resp = await getPosts({ category_id: id });
         // console.log(resp);
         let posts = resp.status == 200 ? [...resp.data] : [];
-        props.history.push({
+        router.push({
             pathname: `/category/${slug.split(" ").join("_")}`,
             state: { posts: posts },
         });
@@ -54,8 +56,8 @@ const SideBar = (props) => {
             </ul>
             <p className="menu-label is-hidden-mobile">Pinned Posts</p>
             <ul className="menu-list is-hidden-mobile">
-                {postContext.pinned.length ? (
-                    postContext.pinned.map((post) => {
+                {postState.pinned.length ? (
+                    postState.pinned.map((post) => {
                         return (
                             <li key={post.id} onClick={() => handlePostOnClick(post)}>
                                 <a>{post.title.rendered}</a>
@@ -72,4 +74,4 @@ const SideBar = (props) => {
     );
 };
 
-export default SideBar;
+export default withPostContext(SideBar);

@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import PostContext from "@/contexts/PostContext";
-import { withRouter } from "react-router-dom";
+import withPostContext from "@/components/common/withPostContext";
+import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import PropTypes from "prop-types";
 
 const BaseContainer = (props) => {
-    const { postContext } = useContext(PostContext);
-    const { history, posts } = props;
+    const { postState, posts } = props;
+    const router = useRouter();
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
         let url = `${id}-${slug.split(" ").join("_")}.html`;
-        history.push({
+        router.push({
             pathname: `/post/${url}`,
             state: { post: post },
         });
@@ -47,7 +47,7 @@ const BaseContainer = (props) => {
                             {post.tags.length ? (
                                 post.tags.map((tag) => (
                                     <span className="tag is-info" key={tag}>
-                                        {postContext.tags[tag]}
+                                        {postState.tags[tag]}
                                     </span>
                                 ))
                             ) : (
@@ -72,4 +72,4 @@ BaseContainer.propTypes = {
     posts: PropTypes.array.isRequired,
 };
 
-export default withRouter(BaseContainer);
+export default withPostContext(BaseContainer);
