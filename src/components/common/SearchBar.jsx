@@ -23,7 +23,6 @@ const SearchBar = (props) => {
 
     /** for now, not able to search the title field */
     const search = async () => {
-        console.log("sss");
         if (!!keyword) {
             let resp = await getPosts({ keyword });
 
