@@ -3,3 +3,27 @@ body,
 #app {
     height: 100%;
 }
+
+.is-clickable {
+    cursor: pointer;
+}
+
+.is-x-paddingless {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.is-y-paddingless {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.is-x-margin {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.is-y-paddingless {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}

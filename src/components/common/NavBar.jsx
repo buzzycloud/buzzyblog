@@ -3,7 +3,6 @@ import withPostContext from "@/components/common/withPostContext";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 
-import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 import { getMetas } from "@/apis/metas";
 import SearchBar from "./SearchBar";
@@ -57,11 +56,11 @@ function NavBar(props) {
         <nav className="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
-                    <div className="navbar-item">
-                        <a href="/">
+                    <Link href="/">
+                        <a className="navbar-item">
                             <img src={logo} />
                         </a>
-                    </div>
+                    </Link>
                     <h1 className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</h1>
                     <a
                         className={isExpanded ? "navbar-burger is-active" : "navbar-burger"}

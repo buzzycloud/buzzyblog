@@ -5,7 +5,7 @@ import PostContainer from "@/components/posts/PostContainer";
 const IndexPage = () => {
     return (
         <div className="tile is-parent is-flex-widescreen">
-            <div className="tile is-3 is-x-paddingless">
+            <div className="tile is-3">
                 <SideBar />
             </div>
             <div className="tile is-9">

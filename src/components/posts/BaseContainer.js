@@ -21,13 +21,13 @@ const BaseContainer = (props) => {
     const sortedPosts = [...pinnedPosts, ...regularPosts];
 
     return (
-        <div className="tile is-parent is-vertical">
+        <div className="tile is-parent is-vertical is-y-paddingless">
             {sortedPosts.map((post) => {
                 return (
                     <div className="tile is-child" key={post.id}>
                         <div
-                            style={{ marginBottom: "0.5rem", cursor: "pointer", display: "flex" }}
-                            className="title"
+                            style={{ marginBottom: "0.5rem" }}
+                            className="title is-clickable is-flex"
                             onClick={() => handlePostOnClick(post)}
                         >
                             <h4 className="title is-4">{post.title.rendered}</h4>
@@ -54,11 +54,7 @@ const BaseContainer = (props) => {
                                 <span className="tag">no tag assigned</span>
                             )}
                         </div>
-                        <summary
-                            className="content"
-                            onClick={() => handlePostOnClick(post)}
-                            style={{ cursor: "pointer" }}
-                        >
+                        <summary className="content is-clickable" onClick={() => handlePostOnClick(post)}>
                             {parse(post.excerpt.rendered.replace("&hellip;", "<a>click me to read fulltext</a>"))}
                         </summary>
                     </div>
