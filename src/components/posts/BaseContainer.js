@@ -12,7 +12,7 @@ const BaseContainer = (props) => {
         let url = `${id}-${slug.split(" ").join("_")}.html`;
         router.push({
             pathname: `/post/${url}`,
-            state: { post: post },
+            // state: { post: post },
         });
     };
 
