@@ -8,6 +8,13 @@ body,
     cursor: pointer;
 }
 
+@media screen and (min-width: 769px) {
+    .is-x-paddingless-desktop {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
 .is-x-paddingless {
     padding-left: 0 !important;
     padding-right: 0 !important;
