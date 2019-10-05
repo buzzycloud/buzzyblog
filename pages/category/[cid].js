@@ -1,22 +1,11 @@
 import React from "react";
 import BaseContainer from "@/components/posts/BaseContainer";
 import SideBar from "@/components/common/SideBar";
-import withPostContext from "@/components/common/withPostContext";
-import { useRouter } from "next/router";
+import { getPosts } from "@/apis/posts";
+import { getMetas } from "@/apis/metas";
 
 /** hide_empty == true, so, a category mush have at least one post */
-const CategoryPage = ({ postState }) => {
-    const { all, tags } = postState;
-    const router = useRouter();
-    const c_id = router.query.cid.split("-")[0];
-
-    const posts =
-        c_id == "all"
-            ? all
-            : all.filter((post) => {
-                  return post.categories[0] == c_id;
-              });
-
+const CategoryPage = ({ posts, tags }) => {
     return (
         <div className="tile is-parent is-flex-widescreen">
             <div className="tile is-3">
@@ -29,4 +18,15 @@ const CategoryPage = ({ postState }) => {
     );
 };
 
-export default withPostContext(CategoryPage);
+CategoryPage.getInitialProps = async ({ req }) => {
+    const url = req.originalUrl.split("/")[2];
+    const category_id = url == "all" ? "" : url.split("-")[0];
+    const postsRes = await getPosts({ category_id });
+    const tagsRes = await getMetas("tags");
+    return {
+        posts: postsRes.status == 200 ? postsRes.data : [],
+        tags: tagsRes.status == 200 ? tagsRes.data : {},
+    };
+};
+
+export default CategoryPage;
