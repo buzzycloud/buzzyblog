@@ -5,4 +5,4 @@ const ResumePage = () => {
     return <Resume />;
 };
 
-export default ResumePage;
+export default withPostContext(ResumePage);
