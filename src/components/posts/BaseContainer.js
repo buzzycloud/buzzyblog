@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const BaseContainer = (props) => {
     const { posts, tags } = props;

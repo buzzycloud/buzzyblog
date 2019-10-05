@@ -6,11 +6,13 @@ import { useRouter } from "next/router";
 
 /** hide_empty == true, so, a category mush have at least one post */
 const CategoryPage = ({ postState }) => {
+    const { all, tags } = postState;
     const router = useRouter();
-    console.log(postState, router.query);
-    return <div>hh</div>;
+    const c_id = router.query.cid.split("-")[0];
 
-    const { posts, tags } = postState;
+    const posts = all.filter((post) => {
+        return post.categories[0] == c_id;
+    });
 
     return (
         <div className="tile is-parent is-flex-widescreen">

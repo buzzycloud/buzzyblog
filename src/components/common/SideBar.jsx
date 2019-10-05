@@ -3,6 +3,7 @@ import withPostContext from "@/components/common/withPostContext";
 import { getMetas } from "@/apis/metas";
 import { getPosts } from "@/apis/posts";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const SideBar = (props) => {
     const router = useRouter();
@@ -48,8 +49,10 @@ const SideBar = (props) => {
                 </li>
                 {categories.map((c) => {
                     return (
-                        <li key={c.id} onClick={() => handleCategoryOnClick(c)}>
-                            <a>{c.name}</a>
+                        <li key={c.id}>
+                            <Link href="/category/[cid]" as={`/category/${c.id}-${c.slug}`}>
+                                <a>{c.name}</a>
+                            </Link>
                         </li>
                     );
                 })}
