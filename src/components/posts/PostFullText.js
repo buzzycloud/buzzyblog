@@ -1,12 +1,10 @@
 import React from "react";
-import withPostContext from "@/components/common/withPostContext";
 import parse from "html-react-parser";
 import PostComments from "./PostComments";
 import PropTypes from "prop-types";
 
 const PostFullText = (props) => {
-    const { post_id, postState } = props;
-    const post = postState.all.find((post) => post.id == post_id);
+    const post = props.post;
     const title = parse(post.title.rendered);
     const body = parse(post.content.rendered);
     return (
@@ -47,7 +45,7 @@ const PostFullText = (props) => {
 };
 
 PostFullText.propTypes = {
-    post_id: PropTypes.string.isRequired,
+    post: PropTypes.object.isRequired,
 };
 
-export default withPostContext(PostFullText);
+export default PostFullText;

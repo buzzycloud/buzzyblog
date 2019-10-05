@@ -1,56 +1,15 @@
-import React, { useEffect } from "react";
-import withPostContext from "@/components/common/withPostContext";
+import React from "react";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 
-import { getPosts } from "@/apis/posts";
-import { getMetas } from "@/apis/metas";
 import SearchBar from "./SearchBar";
 
-export default withPostContext(NavBar);
-
-function NavBar(props) {
+export default function NavBar() {
     /** toggle navbav expand status when mobile */
     const [isExpanded, setIsExpanded] = React.useState(false);
     const handleNavbarBurgerOnClick = () => {
         setIsExpanded((isExpanded) => !isExpanded);
     };
-
-    /** context */
-    const { dispatch } = props;
-
-    const initPosts = async () => {
-        let [respPosts, respTags] = await Promise.all([getPosts(), getMetas("tags")]);
-        let posts =
-            respPosts.status == 200
-                ? {
-                      all: [...respPosts.data],
-                      pinned: respPosts.data.filter((post) => post.sticky),
-                  }
-                : {
-                      all: [],
-                      pinned: [],
-                  };
-
-        let tags = {};
-        if (respTags.status == 200) {
-            for (let tag of respTags.data) {
-                tags[tag.id] = tag.slug;
-            }
-        }
-
-        dispatch({
-            type: "INIT_POSTS",
-            ...posts,
-            search: [],
-            tags: tags,
-        });
-    };
-
-    /** init posts when the navbar is rendered for the first time */
-    useEffect(() => {
-        initPosts();
-    }, []);
 
     return (
         <nav className="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">

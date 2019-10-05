@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
-import withPostContext from "@/components/common/withPostContext";
+import React from "react";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import PropTypes from "prop-types";
 
 const BaseContainer = (props) => {
-    const { postState, posts } = props;
+    const { posts, tags } = props;
     const router = useRouter();
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
@@ -47,7 +46,7 @@ const BaseContainer = (props) => {
                             {post.tags.length ? (
                                 post.tags.map((tag) => (
                                     <span className="tag is-info" key={tag}>
-                                        {postState.tags[tag]}
+                                        {tags[tag]}
                                     </span>
                                 ))
                             ) : (
@@ -68,4 +67,4 @@ BaseContainer.propTypes = {
     posts: PropTypes.array.isRequired,
 };
 
-export default withPostContext(BaseContainer);
+export default BaseContainer;

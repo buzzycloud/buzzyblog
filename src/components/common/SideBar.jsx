@@ -34,8 +34,8 @@ const SideBar = (props) => {
         // console.log(resp);
         let posts = resp.status == 200 ? [...resp.data] : [];
         router.push({
-            pathname: `/category/${slug.split(" ").join("_")}`,
-            state: { posts: posts },
+            pathname: `/category/${slug}`,
+            // state: { posts: posts },
         });
     };
 
