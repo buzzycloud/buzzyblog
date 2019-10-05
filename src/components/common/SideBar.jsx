@@ -44,8 +44,10 @@ const SideBar = (props) => {
         <aside className="menu">
             <p className="menu-label">Categories</p>
             <ul className="menu-list">
-                <li onClick={() => handleCategoryOnClick({ id: 0, slug: "all" })}>
-                    <a>All Categories</a>
+                <li>
+                    <Link href="/category/[cid]" as="/category/all">
+                        <a>All Categories</a>
+                    </Link>
                 </li>
                 {categories.map((c) => {
                     return (

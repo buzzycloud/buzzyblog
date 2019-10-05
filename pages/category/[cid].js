@@ -10,9 +10,12 @@ const CategoryPage = ({ postState }) => {
     const router = useRouter();
     const c_id = router.query.cid.split("-")[0];
 
-    const posts = all.filter((post) => {
-        return post.categories[0] == c_id;
-    });
+    const posts =
+        c_id == "all"
+            ? all
+            : all.filter((post) => {
+                  return post.categories[0] == c_id;
+              });
 
     return (
         <div className="tile is-parent is-flex-widescreen">
