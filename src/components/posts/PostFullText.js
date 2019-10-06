@@ -27,7 +27,7 @@ const PostFullText = (props) => {
                                     </span>
                                 ))
                             ) : (
-                                <span className="tag">no tag assigned</span>
+                                <React.Fragment />
                             )}
                         </div>
                     </div>

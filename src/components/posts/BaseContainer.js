@@ -2,17 +2,16 @@ import React from "react";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import PropTypes from "prop-types";
-import Link from "next/link";
 
 const BaseContainer = (props) => {
     const { posts, tags } = props;
     const router = useRouter();
+
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
-        let url = `${id}-${slug.split(" ").join("_")}.html`;
+        let url = `${id}-${slug.split(" ").join("-")}.html`;
         router.push({
             pathname: `/post/${url}`,
-            // state: { post: post },
         });
     };
 
@@ -51,7 +50,7 @@ const BaseContainer = (props) => {
                                     </span>
                                 ))
                             ) : (
-                                <span className="tag">no tag assigned</span>
+                                <React.Fragment />
                             )}
                         </div>
                         <summary className="content is-clickable" onClick={() => handlePostOnClick(post)}>

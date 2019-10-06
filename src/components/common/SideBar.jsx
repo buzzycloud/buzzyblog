@@ -20,15 +20,14 @@ const SideBar = () => {
 
     const handlePostOnClick = (post) => {
         const { id, slug } = post;
-        let url = `${id}-${slug.split(" ").join("_")}.html`;
+        let url = `${id}-${slug.split(" ").join("-")}.html`;
         router.push({
             pathname: `/post/${url}`,
-            state: { post: post },
         });
     };
 
     const handleCategoryOnClick = async ({ id, slug }) => {
-        const pathname = id == 0 ? "/category/all" : `/category/${id}-${slug}`;
+        const pathname = id == 0 ? "/category/all" : `/category/${id}-${slug.split(" ").join("-")}`;
         router.push({ pathname: pathname });
     };
 
