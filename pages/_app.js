@@ -13,7 +13,7 @@ import { PostContextProvider } from "@/contexts/PostContext";
  * If you need shared components in all your pages (like a menu or a toolbar),
  * take a look at the <App> component instead.
  */
-class MyApp extends App {
+export default class BuzzyBlogApp extends App {
     /**
      * Note: getInitialProps can not be used in children components. Only in pages.
      * 'getInitialProps' would only be called when the component is in the folder './pages'.
@@ -55,5 +55,3 @@ class MyApp extends App {
         );
     }
 }
-
-export default MyApp;
