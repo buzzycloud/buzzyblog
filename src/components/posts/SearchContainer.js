@@ -1,10 +1,10 @@
-import React from "react";
-import withPostContext from "@/components/common/withPostContext";
+import React, { useContext } from "react";
+import PostContext from "@/contexts/PostContext";
 import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
 
-const SearchContainer = (props) => {
-    const { postState } = props;
+const SearchContainer = () => {
+    const { postState } = useContext(PostContext);
     if (postState.search.length === 0) {
         return <NoPostMessage msg="Posts Not Found" />;
     }
@@ -12,4 +12,4 @@ const SearchContainer = (props) => {
     return <BaseContainer posts={postState.search} />;
 };
 
-export default withPostContext(SearchContainer);
+export default SearchContainer;

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import withPostContext from "@/components/common/withPostContext";
+import React, { useEffect, useState, useContext } from "react";
+import PostContext from "@/contexts/PostContext";
 import { getMetas } from "@/apis/metas";
 import { useRouter } from "next/router";
 
-const SideBar = (props) => {
+const SideBar = () => {
     const router = useRouter();
-    const { postState } = props;
+    const { postState } = useContext(PostContext);
 
     const [categories, setCategories] = useState([]);
     const initCategories = async () => {
@@ -67,4 +67,4 @@ const SideBar = (props) => {
     );
 };
 
-export default withPostContext(SideBar);
+export default SideBar;

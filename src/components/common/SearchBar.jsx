@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import withPostContext from "@/components/common/withPostContext";
+import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 
-const SearchBar = (props) => {
+const SearchBar = () => {
     const router = useRouter();
-    const { dispatch } = props;
+    const { dispatch } = useContext(PostContext);
 
     /** search posts */
     const [keyword, setKeyword] = useState(null);
@@ -60,4 +60,4 @@ const SearchBar = (props) => {
     );
 };
 
-export default withPostContext(SearchBar);
+export default SearchBar;
