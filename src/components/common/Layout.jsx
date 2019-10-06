@@ -1,22 +1,11 @@
-import React, { useEffect } from "react";
-import withPostContext from "@/components/common/withPostContext";
+import React from "react";
 import "bulma/css/bulma.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
-const Layout = ({ dispatch, posts, tags, children }) => {
-    /** init posts when the navbar is rendered for the first time */
-    useEffect(() => {
-        dispatch({
-            type: "INIT_POSTS",
-            ...posts,
-            search: [],
-            tags: tags,
-        });
-    }, []);
-
+const Layout = ({ children }) => {
     return (
         <React.Fragment>
             <NavBar />
@@ -28,4 +17,4 @@ const Layout = ({ dispatch, posts, tags, children }) => {
     );
 };
 
-export default withPostContext(Layout);
+export default Layout;

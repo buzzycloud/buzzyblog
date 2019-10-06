@@ -1,10 +1,10 @@
-import React from "react";
-import withPostContext from "@/components/common/withPostContext";
+import React, { useContext } from "react";
+import PostContext from "@/contexts/PostContext";
 import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
 
-const PostContainer = (props) => {
-    const { postState } = props;
+const PostContainer = () => {
+    const { postState } = useContext(PostContext);
     // console.log(postState);
     if (postState.all.length === 0) {
         return <NoPostMessage msg="The author hasn't published any posts!" />;
@@ -13,4 +13,4 @@ const PostContainer = (props) => {
     return <BaseContainer posts={postState.all} tags={postState.tags} />;
 };
 
-export default withPostContext(PostContainer);
+export default PostContainer;

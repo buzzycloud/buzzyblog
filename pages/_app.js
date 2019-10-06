@@ -14,32 +14,8 @@ import { PostContextProvider } from "@/contexts/PostContext";
  * take a look at the <App> component instead.
  */
 export default class BuzzyBlogApp extends App {
-    /**
-     * Note: getInitialProps can not be used in children components. Only in pages.
-     * 'getInitialProps' would only be called when the component is in the folder './pages'.
-     *
-     * https://github.com/zeit/next.js/issues/6115
-     */
-    static async getInitialProps() {
-        let [respPosts, respTags] = await Promise.all([getPosts(), getMetas("tags")]);
-        let ok = respPosts.status == 200;
-        let posts = {
-            all: ok ? [...respPosts.data] : [],
-            pinned: ok ? respPosts.data.filter((post) => post.sticky) : [],
-        };
-
-        let tags = {};
-        ok = respTags.status == 200;
-        if (ok) {
-            for (let tag of respTags.data) {
-                tags[tag.id] = tag.slug;
-            }
-        }
-        return { posts, tags };
-    }
-
     render() {
-        const { Component, pageProps, posts, tags } = this.props;
+        const { Component, pageProps } = this.props;
         return (
             <PostContextProvider>
                 <Head>
@@ -48,7 +24,7 @@ export default class BuzzyBlogApp extends App {
                 <style jsx global>
                     {styles}
                 </style>
-                <Layout posts={posts} tags={tags}>
+                <Layout>
                     <Component {...pageProps} />
                 </Layout>
             </PostContextProvider>
