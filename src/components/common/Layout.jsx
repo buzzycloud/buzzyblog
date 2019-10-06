@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import withPostContext from "@/components/common/withPostContext";
 import "bulma/css/bulma.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import fetch from "isomorphic-unfetch";
 
 import NavBar from "./NavBar";
 import Footer from "./Footer";
