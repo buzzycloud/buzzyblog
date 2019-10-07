@@ -50,7 +50,7 @@ const BaseContainer = (props) => {
                                     </span>
                                 ))
                             ) : (
-                                <React.Fragment />
+                                <></>
                             )}
                         </div>
                         <summary className="content is-clickable" onClick={() => handlePostOnClick(post)}>

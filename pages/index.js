@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import SideBar from "@/components/common/SideBar";
-import PostContainer from "@/components/posts/PostContainer";
+import PostsContainer from "@/components/posts/PostsContainer";
 import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 import { getMetas } from "@/apis/metas";
@@ -22,7 +22,7 @@ const IndexPage = ({ all, pinned, tags }) => {
                 <SideBar />
             </div>
             <div className="tile is-9">
-                <PostContainer isLoading={isLoading} />
+                <PostsContainer isLoading={isLoading} />
             </div>
         </div>
     );

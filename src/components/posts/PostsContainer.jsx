@@ -3,7 +3,7 @@ import PostContext from "@/contexts/PostContext";
 import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
 
-const PostContainer = ({ isLoading }) => {
+const PostsContainer = ({ isLoading }) => {
     if (isLoading) {
         return <div>page is loading....</div>;
     }
@@ -17,4 +17,4 @@ const PostContainer = ({ isLoading }) => {
     return <BaseContainer posts={postState.all} tags={postState.tags} />;
 };
 
-export default PostContainer;
+export default PostsContainer;
