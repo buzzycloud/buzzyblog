@@ -45,3 +45,8 @@
     -   Buzzy Blog( `/docs/wordpress/plugins`, required, otherwise visitors cannot add comments)
     -   Force Login (`recommended, not required`)
     -   [WP Githuber MD](https://github.com/terrylinooo/githuber-md)(`highly recommended`)
+
+### FAQs:
+
+-   Why not bootstrap?
+    -   Bootstrap does not have modularity.
