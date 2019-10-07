@@ -1,14 +1,12 @@
 const PostReducer = (state, action) => {
-    const { type, ...postState } = action;
+    const { type, val } = action;
     switch (type) {
         case "INIT_POSTS":
-            return {
-                ...postState,
-            };
+            return { ...val };
         case "SEARCH_POSTS":
             return {
                 ...state,
-                search: [...postState.search],
+                search: [...val.search],
             };
         default:
             return state;

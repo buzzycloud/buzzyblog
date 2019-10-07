@@ -28,7 +28,9 @@ const SearchBar = () => {
 
             dispatch({
                 type: "SEARCH_POSTS",
-                search: resp.status == 200 ? [...resp.data] : [],
+                val: {
+                    search: resp.status == 200 ? [...resp.data] : [],
+                },
             });
 
             if (router.pathname !== "/search") {

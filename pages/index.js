@@ -1,19 +1,19 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SideBar from "@/components/common/SideBar";
 import PostContainer from "@/components/posts/PostContainer";
 import PostContext from "@/contexts/PostContext";
 import { getPosts } from "@/apis/posts";
 import { getMetas } from "@/apis/metas";
 
-const IndexPage = ({ posts, tags }) => {
+const IndexPage = ({ all, pinned, tags }) => {
     const { dispatch } = useContext(PostContext);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         dispatch({
             type: "INIT_POSTS",
-            ...posts,
-            search: [],
-            tags: tags,
+            val: { all, pinned, tags, search: [] },
         });
+        setIsLoading(false);
     }, []);
 
     return (
@@ -22,7 +22,7 @@ const IndexPage = ({ posts, tags }) => {
                 <SideBar />
             </div>
             <div className="tile is-9">
-                <PostContainer />
+                <PostContainer isLoading={isLoading} />
             </div>
         </div>
     );
@@ -36,16 +36,9 @@ const IndexPage = ({ posts, tags }) => {
  */
 IndexPage.getInitialProps = async () => {
     let [respPosts, respTags] = await Promise.all([getPosts(), getMetas("tags")]);
-    let posts =
-        respPosts.status == 200
-            ? {
-                  all: [...respPosts.data],
-                  pinned: respPosts.data.filter((post) => post.sticky),
-              }
-            : {
-                  all: [],
-                  pinned: [],
-              };
+    let ok = respPosts.status == 200;
+    let all = ok ? [...respPosts.data] : [];
+    let pinned = ok ? respPosts.data.filter((post) => post.sticky) : [];
 
     let tags = {};
     if (respTags.status == 200) {
@@ -53,7 +46,7 @@ IndexPage.getInitialProps = async () => {
             tags[tag.id] = tag.slug;
         }
     }
-    return { posts, tags };
+    return { all, pinned, tags };
 };
 
 export default IndexPage;
