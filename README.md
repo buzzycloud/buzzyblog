@@ -25,10 +25,9 @@
 
 ### Buzzy Blog
 
-### :triangular_flag_on_post: Buzzy Blog Features
+### :triangular_flag_on_post: Major Features
 
 -   :round_pushpin: React + WordPress OR Drupal OR Joomla REST API
--   :round_pushpin: Bulma CSS Framework
 -   :round_pushpin: Google Analytics
 -   :round_pushpin: Placeholders for Google Ads
 -   :round_pushpin: Search Engine Optimization (`SEO`)
