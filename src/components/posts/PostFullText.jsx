@@ -2,11 +2,14 @@ import React from "react";
 import parse from "html-react-parser";
 import PostComments from "./PostComments";
 import PropTypes from "prop-types";
+import Prism from "prismjs"; // not used, but that's enough. weird!
+import "@/assets/styles/prism.css";
 
 const PostFullText = (props) => {
     const post = props.post;
     const title = parse(post.title.rendered);
     const body = parse(post.content.rendered);
+
     return (
         <article className="container">
             <header className="tile is-parent is-vertical">
