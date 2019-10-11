@@ -1,6 +1,7 @@
 const compose = require("lodash/fp/compose");
 const withSass = require("@zeit/next-sass");
 const withCss = require("@zeit/next-css");
+const buzzy = require("./buzzy.config");
 
 const enhance = compose(
     withCss,
@@ -22,7 +23,7 @@ module.exports = enhance({
     compress: true,
     distDir: "dist",
     env: {
-        HTML_TITLE: "Yumin's Notes",
+        ...buzzy.env,
     },
     poweredByHeader: false,
     webpack(config, options) {
