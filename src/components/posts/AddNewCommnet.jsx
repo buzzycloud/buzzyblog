@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react";
-import Swal from "sweetalert2/dist/sweetalert2.js";
-import "sweetalert2/src/sweetalert2.scss";
 import isEmail from "validator/lib/isEmail";
 import { addOneComment } from "src/apis/posts";
 import PropTypes from "prop-types";
+import { fireAlert } from "src/utils/alert";
 
 const AddNewComment = (props) => {
     const { post_id, parent_id } = props;
@@ -34,45 +33,22 @@ const AddNewComment = (props) => {
          * }
          */
         if (!isEmail(authorEmailRef.current.value)) {
-            await Swal.fire({
-                position: "top",
-                type: "error",
-                titleText: "Invalid Email Address",
-                text: "Please try again!",
-                showConfirmButton: false,
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                timer: 2000,
-            });
+            await fireAlert({ type: "error", msg: "Invalid Email Address" });
             return;
         }
         let len = Object.values(comment).filter((val) => !!val).length;
         if (len < 3) {
-            await Swal.fire({
-                position: "top",
-                type: "error",
-                titleText: "All Fields Are Required!",
-                text: "Please try again!",
-                showConfirmButton: false,
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                timer: 2000,
-            });
+            await fireAlert({ type: "error", msg: "All Fields Are Required!" });
             return;
         }
 
         let payload = { ...comment, post: post_id, parent: parent_id };
         let resp = await addOneComment(payload);
         if (resp.status === 201) {
-            await Swal.fire({
-                position: "top",
+            await fireAlert({
                 type: "success",
-                titleText: "Thanks!",
-                text: "Your new comment is under the author's review!",
-                showConfirmButton: false,
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                timer: 1500,
+                msg: "Thanks!",
+                submsg: "Your new comment is under the author's review!",
             });
             resetComment();
         } else {
