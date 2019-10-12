@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import isEmail from "validator/lib/isEmail";
 import { addOneComment } from "src/apis/posts";
 import PropTypes from "prop-types";
-import { fireAlert } from "src/utils/alert";
+import * as alert from "src/utils/alert";
 
 const AddNewComment = (props) => {
     const { post_id, parent_id } = props;
@@ -33,35 +33,26 @@ const AddNewComment = (props) => {
          * }
          */
         if (!isEmail(authorEmailRef.current.value)) {
-            await fireAlert({ type: "error", msg: "Invalid Email Address" });
+            await alert.fire({ type: "error", msg: "Invalid Email Address" });
             return;
         }
         let len = Object.values(comment).filter((val) => !!val).length;
         if (len < 3) {
-            await fireAlert({ type: "error", msg: "All Fields Are Required!" });
+            await alert.fire({ type: "error", msg: "All Fields Are Required!" });
             return;
         }
 
         let payload = { ...comment, post: post_id, parent: parent_id };
         let resp = await addOneComment(payload);
         if (resp.status === 201) {
-            await fireAlert({
+            await alert.fire({
                 type: "success",
                 msg: "Thanks!",
                 submsg: "Your new comment is under the author's review!",
             });
             resetComment();
         } else {
-            await Swal.fire({
-                position: "top",
-                type: "error",
-                titleText: "Sorry! Error~~~",
-                text: "Please try again!",
-                showConfirmButton: false,
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                timer: 1500,
-            });
+            await alert.fire({ type: "error", msg: "Sorry! Error~~~" });
             return;
         }
     };
