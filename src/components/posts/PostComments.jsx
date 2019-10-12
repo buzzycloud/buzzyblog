@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { getMetas } from "@/apis/metas";
+import { getMetas } from "src/apis/metas";
 import parse from "html-react-parser";
 import AddNewComment from "./AddNewCommnet";
 import PropTypes from "prop-types";

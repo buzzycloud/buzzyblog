@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import PostContext from "@/contexts/PostContext";
-import { getMetas } from "@/apis/metas";
+import PostContext from "src/contexts/PostContext";
+import { getMetas } from "src/apis/metas";
 import { useRouter } from "next/router";
 
 const SideBar = () => {

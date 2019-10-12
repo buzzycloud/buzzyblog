@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import PostContext from "@/contexts/PostContext";
-import { getPosts } from "@/apis/posts";
+import PostContext from "src/contexts/PostContext";
+import { getPosts } from "src/apis/posts";
 
 const SearchBar = () => {
     const router = useRouter();

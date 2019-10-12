@@ -1,8 +1,8 @@
 import React from "react";
-import BaseContainer from "@/components/posts/BaseContainer";
-import SideBar from "@/components/common/SideBar";
-import { getPosts } from "@/apis/posts";
-import { getMetas } from "@/apis/metas";
+import BaseContainer from "src/components/posts/BaseContainer";
+import SideBar from "src/components/common/SideBar";
+import { getPosts } from "src/apis/posts";
+import { getMetas } from "src/apis/metas";
 
 /** hide_empty == true, so, a category mush have at least one post */
 const CategoryPage = ({ posts, tags }) => {

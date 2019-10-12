@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PostContext from "@/contexts/PostContext";
+import PostContext from "src/contexts/PostContext";
 import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
 

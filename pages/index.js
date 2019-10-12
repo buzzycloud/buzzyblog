@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import SideBar from "@/components/common/SideBar";
-import PostsContainer from "@/components/posts/PostsContainer";
-import PostContext from "@/contexts/PostContext";
-import { getPosts } from "@/apis/posts";
-import { getMetas } from "@/apis/metas";
+import SideBar from "src/components/common/SideBar";
+import PostsContainer from "src/components/posts/PostsContainer";
+import PostContext from "src/contexts/PostContext";
+import { getPosts } from "src/apis/posts";
+import { getMetas } from "src/apis/metas";
 
 const IndexPage = ({ all, pinned, tags }) => {
     const { dispatch } = useContext(PostContext);

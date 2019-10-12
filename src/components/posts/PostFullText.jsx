@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import PostComments from "./PostComments";
 import PropTypes from "prop-types";
 import Prism from "prismjs";
-import "@/assets/styles/prism.css";
+import "src/assets/styles/prism.css";
 
 const PostFullText = (props) => {
     useEffect(() => {

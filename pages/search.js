@@ -1,6 +1,6 @@
 import React from "react";
-import SideBar from "@/components/common/SideBar";
-import SearchContainer from "@/components/posts/SearchContainer";
+import SideBar from "src/components/common/SideBar";
+import SearchContainer from "src/components/posts/SearchContainer";
 
 const SearchResultPage = () => {
     return (

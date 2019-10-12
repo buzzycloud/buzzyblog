@@ -1,6 +1,6 @@
 import React from "react";
-import PostFullText from "@/components/posts/PostFullText";
-import { getOnePostById } from "@/apis/posts";
+import PostFullText from "src/components/posts/PostFullText";
+import { getOnePostById } from "src/apis/posts";
 
 const PostPage = ({ post }) => {
     return <PostFullText post={post} />;

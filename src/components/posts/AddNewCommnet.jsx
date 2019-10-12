@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { addOneComment } from "@/apis/posts";
+import { addOneComment } from "src/apis/posts";
 import PropTypes from "prop-types";
 const AddNewComment = (props) => {
     const { post_id, parent_id } = props;
