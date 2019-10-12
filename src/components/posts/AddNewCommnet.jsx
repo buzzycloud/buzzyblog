@@ -12,6 +12,13 @@ const AddNewComment = (props) => {
     const authorNameRef = useRef(null);
     const commentContentRef = useRef(null);
 
+    const resetComment = () => {
+        authorEmailRef.current.value = "";
+        authorNameRef.current.value = "";
+        commentContentRef.current.value = "";
+        setComment({});
+    };
+
     const handleCommentOnChange = (val) => {
         setComment({ ...comment, ...val });
     };
@@ -67,10 +74,7 @@ const AddNewComment = (props) => {
                 allowEscapeKey: false,
                 timer: 1500,
             });
-            authorEmailRef.current.value = "";
-            authorNameRef.current.value = "";
-            commentContentRef.current.value = "";
-            setComment({});
+            resetComment();
         } else {
             await Swal.fire({
                 position: "top",
