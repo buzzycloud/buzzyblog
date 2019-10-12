@@ -1,18 +1,23 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState, useRef } from "react";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import isEmail from "validator/lib/isEmail";
 import { addOneComment } from "src/apis/posts";
 import PropTypes from "prop-types";
+
 const AddNewComment = (props) => {
     const { post_id, parent_id } = props;
     const [comment, setComment] = useState({});
-    const [key, setKey] = useState("some-random-string");
+    const authorEmailRef = useRef(null);
+    const authorNameRef = useRef(null);
+    const commentContentRef = useRef(null);
 
     const handleCommentOnChange = (val) => {
         setComment({ ...comment, ...val });
     };
 
     const handleSummit = async () => {
-        /**
+        /** payload:
          * {
          * "author_name":"XYZ",
          * "author_email":"abc@gamil.com",
@@ -21,7 +26,19 @@ const AddNewComment = (props) => {
          * "post":7
          * }
          */
-
+        if (!isEmail(authorEmailRef.current.value)) {
+            await Swal.fire({
+                position: "top",
+                type: "error",
+                titleText: "Invalid Email Address",
+                text: "Please try again!",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                timer: 2000,
+            });
+            return;
+        }
         let len = Object.values(comment).filter((val) => !!val).length;
         if (len < 3) {
             await Swal.fire({
@@ -50,12 +67,10 @@ const AddNewComment = (props) => {
                 allowEscapeKey: false,
                 timer: 1500,
             });
-            //  resetting the key will re-render the component
-            setKey(
-                Math.random()
-                    .toString(36)
-                    .substring(2)
-            );
+            authorEmailRef.current.value = "";
+            authorNameRef.current.value = "";
+            commentContentRef.current.value = "";
+            setComment({});
         } else {
             await Swal.fire({
                 position: "top",
@@ -67,10 +82,11 @@ const AddNewComment = (props) => {
                 allowEscapeKey: false,
                 timer: 1500,
             });
+            return;
         }
     };
     return (
-        <div key={key}>
+        <div>
             <div className="is-flex is-marginless" style={{ justifyContent: "space-between" }}>
                 <div>
                     Add a comment here:
@@ -87,6 +103,7 @@ const AddNewComment = (props) => {
             <div className="field">
                 <p className="control has-icons-left has-icons-right">
                     <input
+                        ref={authorEmailRef}
                         className="input"
                         type="email"
                         placeholder="Email"
@@ -100,6 +117,7 @@ const AddNewComment = (props) => {
             <div className="field">
                 <p className="control has-icons-left">
                     <input
+                        ref={authorNameRef}
                         className="input"
                         type="text"
                         placeholder="Name"
@@ -112,6 +130,7 @@ const AddNewComment = (props) => {
             </div>
             <div>
                 <textarea
+                    ref={commentContentRef}
                     className="textarea"
                     placeholder="e.g. Hello world"
                     onChange={({ target: { value } }) => handleCommentOnChange({ content: value })}
