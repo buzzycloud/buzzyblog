@@ -65,6 +65,7 @@ const BaseContainer = (props) => {
 
 BaseContainer.propTypes = {
     posts: PropTypes.array.isRequired,
+    tags: PropTypes.array.isRequired,
 };
 
 export default BaseContainer;

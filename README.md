@@ -49,3 +49,9 @@
 
 -   Why not bootstrap?
     -   Bootstrap does not have modularity.
+
+### Screenshots
+
+-   Code Syntax Highlight:
+
+![Code Syntax Highlight](./screenshots/Code_Highlight.png)

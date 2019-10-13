@@ -5,11 +5,10 @@ import PropTypes from "prop-types";
 import Prism from "prismjs";
 import "src/assets/styles/prism.css";
 
-const PostFullText = (props) => {
+const PostFullText = ({ post }) => {
     useEffect(() => {
         Prism.highlightAll();
     }, []);
-    const post = props.post;
     const title = parse(post.title.rendered);
     const body = parse(post.content.rendered);
 

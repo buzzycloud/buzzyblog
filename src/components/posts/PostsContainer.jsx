@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import PostContext from "src/contexts/PostContext";
 import BaseContainer from "./BaseContainer";
 import NoPostMessage from "./NoPostMessage";
@@ -15,6 +16,10 @@ const PostsContainer = ({ isLoading }) => {
     }
 
     return <BaseContainer posts={postState.all} tags={postState.tags} />;
+};
+
+PostsContainer.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
 };
 
 export default PostsContainer;
