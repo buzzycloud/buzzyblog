@@ -1,5 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = process.env.NODE_ENV === "production" ? "https://api.guiyumin.com" : "http://localhost:8080";
+const { NODE_ENV, API_PROD, API_DEV } = process.env;
+
+const BASE_URL = NODE_ENV === "production" ? API_PROD : API_DEV;
 
 export { axios, BASE_URL };
