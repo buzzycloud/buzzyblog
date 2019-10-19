@@ -9,13 +9,15 @@ const PostsContainer = ({ isLoading }) => {
         return <div>page is loading....</div>;
     }
 
-    const { postState } = useContext(PostContext);
+    const {
+        postState: { all, tags },
+    } = useContext(PostContext);
     // console.log(postState);
-    if (postState.all.length === 0) {
+    if (all.length === 0) {
         return <NoPostMessage msg="The author hasn't published any posts!" />;
     }
 
-    return <BaseContainer posts={postState.all} tags={postState.tags} />;
+    return <BaseContainer posts={all} tags={tags} />;
 };
 
 PostsContainer.propTypes = {

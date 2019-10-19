@@ -21,12 +21,18 @@ const CategoryPage = ({ posts, tags }) => {
 CategoryPage.getInitialProps = async ({ req }) => {
     const url = req.originalUrl.split("/")[2];
     const category_id = url == "all" ? "" : url.split("-")[0];
-    const postsRes = await getPosts({ category_id });
-    const tagsRes = await getMetas("tags");
-    return {
-        posts: postsRes.status == 200 ? postsRes.data : [],
-        tags: tagsRes.status == 200 ? tagsRes.data : {},
-    };
+    // const postsRes = await getPosts({ category_id });
+    // const tagsRes = await getMetas("tags");
+
+    let [respPosts, respTags] = await Promise.all([getPosts({ category_id }), getMetas("tags")]);
+    let posts = respPosts.status == 200 ? [...respPosts.data] : [];
+    let tags = {};
+    if (respTags.status == 200) {
+        for (let tag of respTags.data) {
+            tags[tag.id] = tag.slug;
+        }
+    }
+    return { posts, tags };
 };
 
 export default CategoryPage;

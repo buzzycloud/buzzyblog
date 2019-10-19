@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import PostContext from "src/contexts/PostContext";
 import { getPosts } from "src/apis/posts";
+import { getMetas } from "src/apis/metas";
 import { ACTIONS } from "src/utils/consts";
 
 const SearchBar = () => {
@@ -25,13 +26,17 @@ const SearchBar = () => {
     /** for now, not able to search the title field */
     const search = async () => {
         if (!!keyword) {
-            let resp = await getPosts({ keyword });
-
+            let [respPosts, respTags] = await Promise.all([getPosts({ keyword }), getMetas("tags")]);
+            let search = respPosts.status == 200 ? [...respPosts.data] : [];
+            let tags = {};
+            if (respTags.status == 200) {
+                for (let tag of respTags.data) {
+                    tags[tag.id] = tag.slug;
+                }
+            }
             dispatch({
                 type: ACTIONS.SEARCH_POSTS,
-                val: {
-                    search: resp.status == 200 ? [...resp.data] : [],
-                },
+                val: { search, tags },
             });
 
             if (router.pathname !== "/search") {
