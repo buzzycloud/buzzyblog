@@ -4,13 +4,14 @@ import PostsContainer from "src/components/posts/PostsContainer";
 import PostContext from "src/contexts/PostContext";
 import { getPosts } from "src/apis/posts";
 import { getMetas } from "src/apis/metas";
+import { ACTIONS } from "src/utils/consts";
 
 const IndexPage = ({ all, pinned, tags }) => {
     const { dispatch } = useContext(PostContext);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         dispatch({
-            type: "INIT_POSTS",
+            type: ACTIONS.INIT_POSTS,
             val: { all, pinned, tags, search: [] },
         });
         setIsLoading(false);

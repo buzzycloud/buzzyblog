@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import PostContext from "src/contexts/PostContext";
 import { getPosts } from "src/apis/posts";
+import { ACTIONS } from "src/utils/consts";
 
 const SearchBar = () => {
     const router = useRouter();
@@ -27,7 +28,7 @@ const SearchBar = () => {
             let resp = await getPosts({ keyword });
 
             dispatch({
-                type: "SEARCH_POSTS",
+                type: ACTIONS.SEARCH_POSTS,
                 val: {
                     search: resp.status == 200 ? [...resp.data] : [],
                 },

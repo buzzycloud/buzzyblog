@@ -1,9 +1,11 @@
+import { ACTIONS } from "src/utils/consts";
+
 const PostReducer = (state, action) => {
     const { type, val } = action;
     switch (type) {
-        case "INIT_POSTS":
+        case ACTIONS.INIT_POSTS:
             return { ...val };
-        case "SEARCH_POSTS":
+        case ACTIONS.SEARCH_POSTS:
             return {
                 ...state,
                 search: [...val.search],
