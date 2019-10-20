@@ -41,8 +41,6 @@
     -   Permalink Settings: Custom Structure like this: `http://myblog.com/%post_id%/`
     -   Editor: Visual Editor (default) or Markdown Editor (please check the following plugin `WP Githuber MD`)
 -   Plugins:
-    -   Buzzy Blog( `/docs/wordpress/plugins`, required, otherwise visitors cannot add comments)
-    -   Force Login (`recommended, not required`)
     -   [WP Githuber MD](https://github.com/terrylinooo/githuber-md)(`highly recommended`)
 
 ### FAQs:
