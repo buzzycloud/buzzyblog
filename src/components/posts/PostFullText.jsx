@@ -52,6 +52,7 @@ const PostFullText = ({ post, tags }) => {
 
 PostFullText.propTypes = {
     post: PropTypes.object.isRequired,
+    tags: PropTypes.object.isRequired,
 };
 
 export default PostFullText;
