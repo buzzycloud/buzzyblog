@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import PostContext from "src/contexts/PostContext";
 import parse from "html-react-parser";
 import PostComments from "./PostComments";
 import PropTypes from "prop-types";
 import Prism from "prismjs";
 import "src/assets/styles/prism.css";
 
-const PostFullText = ({ post }) => {
+const PostFullText = ({ post, tags }) => {
     useEffect(() => {
         Prism.highlightAll();
     }, []);
@@ -28,7 +29,7 @@ const PostFullText = ({ post }) => {
                             {post.tags.length ? (
                                 post.tags.map((tag) => (
                                     <span className="tag is-info" key={tag}>
-                                        {postContext.tags[tag]}
+                                        {tags[tag]}
                                     </span>
                                 ))
                             ) : (

@@ -12,7 +12,7 @@ const PostsContainer = ({ isLoading }) => {
     const {
         postState: { all, tags },
     } = useContext(PostContext);
-    // console.log(postState);
+    // console.log(tags);
     if (all.length === 0) {
         return <NoPostMessage msg="The author hasn't published any posts!" />;
     }
