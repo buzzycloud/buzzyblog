@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "next:start": "next start -p 8081",
-        "next:build": "next build",
+        "next:build": "NODE_ENV=production next build",
         "next:dev": "next dev",
         "dev": "nodemon server.js --ignore dist/"
     },
