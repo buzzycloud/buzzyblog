@@ -20,7 +20,7 @@ export default function NavBar() {
                             <img src={logo} />
                         </a>
                     </Link>
-                    <h1 className="navbar-item has-text-black has-text-weight-bold">Yumin's Notes</h1>
+                    <h1 className="navbar-item has-text-black has-text-weight-bold">{process.env.HTML_TITLE}</h1>
                     <a
                         className={isExpanded ? "navbar-burger is-active" : "navbar-burger"}
                         onClick={handleNavbarBurgerOnClick}
