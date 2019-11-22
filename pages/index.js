@@ -44,14 +44,9 @@ IndexPage.getInitialProps = async () => {
     let all = respPosts.status == 200 ? [...respPosts.data] : [];
     let pinned = respStickyPosts.status == 200 ? [...respStickyPosts.data] : [];
 
-    let tags = {};
     const tagsOK = respTags.status == 200;
-    // console.log(Object.values(respTags.data));
-    if (tagsOK) {
-        for (let tag of respTags.data) {
-            tags[tag.id] = tag.slug;
-        }
-    }
+    const tags = tagsOK ? Object.fromEntries(respTags.data.map((tag) => [tag.id, tag.slug])) : {};
+
     return { all, pinned, tags };
 };
 
