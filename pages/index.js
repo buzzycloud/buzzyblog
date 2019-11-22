@@ -36,13 +36,18 @@ const IndexPage = ({ all, pinned, tags }) => {
  * https://github.com/zeit/next.js/issues/6115
  */
 IndexPage.getInitialProps = async () => {
-    let [respPosts, respTags] = await Promise.all([getPosts(), getMetas("tags")]);
-    let ok = respPosts.status == 200;
-    let all = ok ? [...respPosts.data] : [];
-    let pinned = ok ? respPosts.data.filter((post) => post.sticky) : [];
+    let [respPosts, respStickyPosts, respTags] = await Promise.all([
+        getPosts(),
+        getPosts({ sticky: true }),
+        getMetas("tags"),
+    ]);
+    let all = respPosts.status == 200 ? [...respPosts.data] : [];
+    let pinned = respStickyPosts.status == 200 ? [...respStickyPosts.data] : [];
 
     let tags = {};
-    if (respTags.status == 200) {
+    const tagsOK = respTags.status == 200;
+    // console.log(Object.values(respTags.data));
+    if (tagsOK) {
         for (let tag of respTags.data) {
             tags[tag.id] = tag.slug;
         }

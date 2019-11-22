@@ -11,7 +11,7 @@ const postsUrl = `${BASE_URL}/wp-json/wp/v2/posts`;
  */
 
 async function getPosts(params = {}) {
-    const { keyword, page, per_page, category_id } = params;
+    const { keyword, page, per_page, category_id, sticky } = params;
 
     try {
         let resp = await axios.request({
@@ -22,6 +22,7 @@ async function getPosts(params = {}) {
                 page: page ? page : 1,
                 per_page: per_page ? per_page : 10,
                 categories: category_id ? category_id : "",
+                sticky: sticky ? sticky : false,
             },
         });
         return resp;
