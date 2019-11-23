@@ -17,8 +17,8 @@ const BaseContainer = (props) => {
 
     // pinned and all, they may contain duplicated posts
     // i.e., in the most recent 10 posts, one of them may be sticky/pinned posts
-    const pinnedPosts = posts.pinned;
-    const regularPosts = posts.all.filter((post) => !post.sticky);
+    const pinnedPosts = posts.filter((post) => post.sticky);
+    const regularPosts = posts.filter((post) => !post.sticky);
     const sortedPosts = [...pinnedPosts, ...regularPosts];
 
     return (
@@ -66,7 +66,7 @@ const BaseContainer = (props) => {
 };
 
 BaseContainer.propTypes = {
-    posts: PropTypes.object.isRequired,
+    posts: PropTypes.array.isRequired,
     tags: PropTypes.object.isRequired,
 };
 
