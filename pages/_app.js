@@ -3,7 +3,6 @@ import App from "next/app";
 import Router from "next/router";
 import { initGA, logPageView } from "src/utils/google";
 import Head from "next/head";
-import styles from "src/assets/styles/global.scss";
 
 import Layout from "src/components/common/Layout";
 
@@ -27,9 +26,6 @@ export default class BuzzyBlogApp extends App {
                 <Head>
                     <title>{process.env.HTML_TITLE}</title>
                 </Head>
-                <style jsx global>
-                    {styles}
-                </style>
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>

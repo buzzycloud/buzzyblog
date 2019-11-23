@@ -1,5 +1,4 @@
-import React, { useEffect, useContext } from "react";
-import PostContext from "src/contexts/PostContext";
+import React, { useEffect } from "react";
 import parse from "html-react-parser";
 import PostComments from "./PostComments";
 import PropTypes from "prop-types";
