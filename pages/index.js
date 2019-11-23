@@ -37,7 +37,7 @@ const IndexPage = ({ all, pinned, tags }) => {
  */
 IndexPage.getInitialProps = async () => {
     let [respPosts, respStickyPosts, respTags] = await Promise.all([
-        getPosts(),
+        getPosts({ sticky: false }),
         getPosts({ sticky: true }),
         getMetas("tags"),
     ]);

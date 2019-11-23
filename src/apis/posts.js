@@ -18,11 +18,11 @@ async function getPosts(params = {}) {
             url: postsUrl,
             method: "get",
             params: {
-                search: keyword ? keyword : "",
-                page: page ? page : 1,
-                per_page: per_page ? per_page : 10,
-                categories: category_id ? category_id : "",
-                sticky: sticky ? sticky : false,
+                search: keyword,
+                page: page || 1,
+                per_page: per_page || 10,
+                categories: category_id,
+                sticky: sticky || false,
             },
         });
         return resp;

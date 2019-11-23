@@ -17,10 +17,7 @@ const PostsContainer = ({ isLoading }) => {
         return <NoPostMessage msg="The author hasn't published any posts!" />;
     }
 
-    const posts = [...all, ...pinned];
-    const postsWithoutDuplicates = Array.from(new Set(posts));
-
-    return <BaseContainer posts={postsWithoutDuplicates} tags={tags} />;
+    return <BaseContainer posts={[...all, ...pinned]} tags={tags} />;
 };
 
 PostsContainer.propTypes = {

@@ -22,16 +22,16 @@ CategoryPage.getInitialProps = async ({ req }) => {
     const url = req.originalUrl.split("/")[2];
     const category_id = url == "all" ? "" : url.split("-")[0];
 
-    let [respPosts, respTags] = await Promise.all([getPosts({ category_id }), getMetas("tags")]);
-    let posts = respPosts.status == 200 ? [...respPosts.data] : [];
-    let tags = {};
-    if (respTags.status == 200) {
-        for (let tag of respTags.data) {
-            tags[tag.id] = tag.slug;
-        }
-    }
+    const [respPosts, respStickyPosts, respTags] = await Promise.all([
+        getPosts({ category_id, sticky: false }),
+        getPosts({ category_id, sticky: true }),
+        getMetas("tags"),
+    ]);
+    const allPosts = respPosts.status === 200 ? [...respPosts.data] : [];
+    const pinnedPosts = respStickyPosts.status === 200 ? [...respStickyPosts.data] : [];
+    const tags = respTags.status === 200 ? Object.fromEntries(respTags.data.map((tag) => [tag.id, tag.slug])) : {};
 
-    return { posts, tags };
+    return { posts: [...allPosts, ...pinnedPosts], tags };
 };
 
 export default CategoryPage;
