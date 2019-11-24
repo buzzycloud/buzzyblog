@@ -3,6 +3,8 @@ const withSass = require("@zeit/next-sass");
 const withCss = require("@zeit/next-css");
 const buzzy = require("./buzzy.config");
 
+const axios = require("axios");
+
 const enhance = compose(
     withCss,
     withSass
@@ -26,7 +28,7 @@ module.exports = enhance({
         ...buzzy.env,
     },
     poweredByHeader: false,
-    webpack(config, options) {
+    webpack: (config, options) => {
         config.module.rules.push(fileLoaderRule);
         return config;
     },
