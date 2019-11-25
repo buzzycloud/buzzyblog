@@ -1,5 +1,13 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import styles from "src/assets/styles/global.scss";
+import * as Sentry from "@sentry/browser";
+
+process.on("unhandledRejection", (err) => {
+    Sentry.captureException(err);
+});
+
+process.on("uncaughtException", (err) => {
+    Sentry.captureException(err);
+});
 
 class MyDocument extends Document {
     // static async getInitialProps(ctx) {
@@ -12,9 +20,6 @@ class MyDocument extends Document {
             <Html>
                 <Head>
                     <link type="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-                    <style jsx global>
-                        {styles}
-                    </style>
                 </Head>
                 <body>
                     <Main />

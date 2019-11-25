@@ -3,9 +3,12 @@ const withSass = require("@zeit/next-sass");
 const withCss = require("@zeit/next-css");
 const buzzy = require("./buzzy.config");
 
+const withSourceMaps = require("@zeit/next-source-maps")();
+
 const axios = require("axios");
 
 const enhance = compose(
+    withSourceMaps,
     withCss,
     withSass
 );

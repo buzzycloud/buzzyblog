@@ -8,6 +8,10 @@ body,
     cursor: pointer;
 }
 
+.is-clickable:hover {
+    text-decoration: underline;
+}
+
 @media screen and (min-width: 769px) {
     .is-x-paddingless-desktop {
         padding-left: 0 !important;

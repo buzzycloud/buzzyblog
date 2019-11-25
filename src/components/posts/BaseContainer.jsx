@@ -26,11 +26,7 @@ const BaseContainer = (props) => {
             {sortedPosts.map((post) => {
                 return (
                     <div className="tile is-child" key={post.id}>
-                        <div
-                            style={{ marginBottom: "0.5rem" }}
-                            className="title is-clickable is-flex"
-                            onClick={() => handlePostOnClick(post)}
-                        >
+                        <div className="title is-clickable is-flex" onClick={() => handlePostOnClick(post)}>
                             <h4 className="title is-4">{post.title.rendered}</h4>
                         </div>
                         <div className="tags has-addons is-marginless">
