@@ -58,7 +58,7 @@ const AddNewComment = (props) => {
     };
     return (
         <div>
-            <div className="is-flex is-marginless" style={{ justifyContent: "space-between" }}>
+            <div className="is-flex is-marginless" style={{ justifyContent: "space-between", alignItems: "center" }}>
                 <div>
                     Add a comment here:
                     <span className="icon has-text-primary is-large">

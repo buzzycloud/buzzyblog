@@ -6,10 +6,10 @@ body,
 
 .is-clickable {
     cursor: pointer;
-}
 
-.is-clickable:hover {
-    text-decoration: underline;
+    :hover {
+        text-decoration: underline;
+    }
 }
 
 @media screen and (min-width: 769px) {
