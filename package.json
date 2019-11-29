@@ -32,6 +32,7 @@
         "react-dom": "^16.8.6",
         "react-ga": "^2.7.0",
         "react-router-dom": "^5.0.1",
+        "styled-components": "^4.4.1",
         "sweetalert2": "^8.17.1",
         "typeface-roboto": "^0.0.75",
         "validator": "^11.1.0"

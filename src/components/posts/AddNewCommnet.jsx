@@ -1,8 +1,13 @@
 import React, { useState, useRef } from "react";
+import styled from "styled-components";
 import isEmail from "validator/lib/isEmail";
 import { addOneComment } from "src/apis/posts";
 import PropTypes from "prop-types";
 import * as alert from "src/utils/alert";
+
+const IconWrapper = styled.span.attrs((props) => ({
+    className: "icon has-text-primary is-large",
+}))``;
 
 const AddNewComment = (props) => {
     const { post_id, parent_id } = props;
@@ -61,9 +66,9 @@ const AddNewComment = (props) => {
             <div className="is-flex is-marginless" style={{ justifyContent: "space-between", alignItems: "center" }}>
                 <div>
                     Add a comment here:
-                    <span className="icon has-text-primary is-large">
+                    <IconWrapper>
                         <i className="fas fa-hand-point-down"></i>
-                    </span>
+                    </IconWrapper>
                 </div>
                 <div>
                     <a className="button is-primary" onClick={handleSummit}>
