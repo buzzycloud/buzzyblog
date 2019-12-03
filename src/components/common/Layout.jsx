@@ -9,9 +9,7 @@ const Layout = ({ children }) => {
     return (
         <React.Fragment>
             <NavBar />
-            <div className="container" style={{ minHeight: "calc(80vh - 70px)" }}>
-                {children}
-            </div>
+            <div className="container">{children}</div>
             <Footer />
         </React.Fragment>
     );

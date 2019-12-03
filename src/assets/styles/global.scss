@@ -1,7 +1,14 @@
 html,
-body,
-#app {
+body {
     height: 100%;
+    width: 100%;
+}
+
+#__next {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
 }
 
 .is-clickable {
