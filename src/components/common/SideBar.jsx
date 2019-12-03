@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import PostContext from "src/contexts/PostContext";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { getMetas } from "src/apis/metas";
 import { useRouter } from "next/router";
 
-const SideBar = () => {
+const SideBar = ({ page, posts: { pinned } }) => {
     const router = useRouter();
-    const { postState } = useContext(PostContext);
 
     const [categories, setCategories] = useState([]);
     const initCategories = async () => {
@@ -48,8 +47,8 @@ const SideBar = () => {
             </ul>
             <p className="menu-label is-hidden-mobile">Pinned Posts</p>
             <ul className="menu-list is-hidden-mobile">
-                {postState.pinned.length ? (
-                    postState.pinned.map((post) => {
+                {pinned.length ? (
+                    pinned.map((post) => {
                         return (
                             <li key={post.id} onClick={() => handlePostOnClick(post)}>
                                 <a>{post.title.rendered}</a>
@@ -58,12 +57,17 @@ const SideBar = () => {
                     })
                 ) : (
                     <li>
-                        <a>No Pinned Posts Yet</a>
+                        <a>No pinned posts{page === "category" ? " in this category" : ""}</a>
                     </li>
                 )}
             </ul>
         </aside>
     );
+};
+
+SideBar.propTypes = {
+    page: PropTypes.string.isRequired,
+    posts: PropTypes.object.isRequired,
 };
 
 export default SideBar;

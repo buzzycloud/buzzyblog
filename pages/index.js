@@ -20,7 +20,7 @@ const IndexPage = ({ all, pinned, tags }) => {
     return (
         <div className="tile is-parent is-flex-widescreen is-x-paddingless-desktop">
             <div className="tile is-3">
-                <SideBar />
+                <SideBar page="index" posts={{ pinned }} />
             </div>
             <div className="tile is-9">
                 <PostsContainer isLoading={isLoading} />
