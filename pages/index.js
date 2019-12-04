@@ -5,6 +5,11 @@ import PostContext from "src/contexts/PostContext";
 import { getPosts } from "src/apis/posts";
 import { getMetas } from "src/apis/metas";
 import { ACTIONS } from "src/utils/consts";
+import styled from "styled-components";
+
+const IndexContainer = styled.div.attrs({
+    className: "tile is-parent is-flex-widescreen",
+})``;
 
 const IndexPage = ({ all, pinned, tags }) => {
     const { dispatch } = useContext(PostContext);
@@ -18,14 +23,14 @@ const IndexPage = ({ all, pinned, tags }) => {
     }, []);
 
     return (
-        <div className="tile is-parent is-flex-widescreen is-x-paddingless-desktop">
+        <IndexContainer>
             <div className="tile is-3">
                 <SideBar page="index" posts={{ pinned }} />
             </div>
             <div className="tile is-9">
                 <PostsContainer isLoading={isLoading} />
             </div>
-        </div>
+        </IndexContainer>
     );
 };
 

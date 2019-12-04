@@ -4,12 +4,19 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import styled, { css } from "styled-components";
+
+const Container = styled.div.attrs({
+    className: "container",
+})`
+    margin: 0 5%;
+`;
 
 const Layout = ({ children }) => {
     return (
         <React.Fragment>
             <NavBar />
-            <div className="container">{children}</div>
+            <Container>{children}</Container>
             <Footer />
         </React.Fragment>
     );

@@ -31,7 +31,7 @@ const SideBar = ({ page, posts: { pinned } }) => {
     };
 
     return (
-        <aside className="menu">
+        <aside className="menu" style={{ padding: "0.75rem 0 0 0.75rem" }}>
             <p className="menu-label">Categories</p>
             <ul className="menu-list">
                 <li onClick={() => handleCategoryOnClick({ id: 0, slug: "all" })}>

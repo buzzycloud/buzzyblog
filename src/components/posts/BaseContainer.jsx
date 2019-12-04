@@ -22,7 +22,7 @@ const BaseContainer = (props) => {
     const sortedPosts = [...pinnedPosts, ...regularPosts];
 
     return (
-        <div className="tile is-parent is-vertical is-y-paddingless">
+        <div className="tile is-parent is-vertical">
             {sortedPosts.map((post) => {
                 return (
                     <div className="tile is-child" key={post.id}>
