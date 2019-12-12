@@ -6,7 +6,7 @@ import styles from "src/assets/styles/global.scss";
 import { initGA, logPageView } from "src/utils/google";
 import Head from "next/head";
 
-Sentry.init({ dsn: process.env.SENTRY_DSN });
+Sentry.init({ dsn: process.env.SENTRY_DSN, environment: process.env.NODE_ENV });
 
 import Layout from "src/components/common/Layout";
 
