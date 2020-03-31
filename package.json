@@ -23,7 +23,7 @@
         "helmet": "^3.21.1",
         "html-react-parser": "^0.9.1",
         "lodash": "^4.17.15",
-        "next": "^9.1.2-canary.1",
+        "next": "^9.3.2",
         "node-sass": "^4.12.0",
         "prismjs": "^1.17.1",
         "prop-types": "^15.7.2",
