@@ -5,10 +5,11 @@ module.exports = {
         [
             "module-resolver",
             {
-                root: [path.resolve("./")],
+                root: ["./"],
                 alias: {
-                    src: path.resolve(__dirname, "src/"),
-                    pages: path.resolve(__dirname, "pages/"),
+                    src: "./src",
+                    pages: "./pages",
+                    "test": "./test",
                 },
             },
         ],
