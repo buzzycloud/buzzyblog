@@ -7,9 +7,10 @@
         "next:start": "next start -p 8081",
         "next:build": "NODE_ENV=production next build",
         "next:dev": "next dev",
-        "dev": "nodemon server.js --ignore dist/"
+        "dev": "nodemon server.js --ignore dist/",
+        "clean": "rm -rf node_modules && rm -rf dist/"
     },
-    "author": "medmin <erichui329@gmail.com>",
+    "author": "medmin <yumindev@gmail.com>",
     "license": "Apache-2.0",
     "private": false,
     "dependencies": {
@@ -48,6 +49,7 @@
         "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^3.0.0",
         "html-webpack-plugin": "^3.2.0",
+        "nodemon": "^2.0.2",
         "prettier": "1.18.2",
         "style-loader": "^0.23.1",
         "svg-inline-loader": "^0.8.0",

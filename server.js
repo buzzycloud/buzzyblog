@@ -5,7 +5,9 @@ const handle = next.getRequestHandler();
 
 next.prepare().then(() => {
     const server = express();
-    server.use(require("helmet")({ hidePoweredBy: { setTo: "Buzzy-Blog" } }));
+    server.use(require("helmet")({
+        hidePoweredBy: { setTo: "Buzzy Blog" }
+    }));
     server.get("*", (req, res) => {
         return handle(req, res);
     });
